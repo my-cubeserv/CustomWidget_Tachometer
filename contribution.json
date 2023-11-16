@@ -1,0 +1,257 @@
+{
+	"name": "Pyramid Chart",
+	"description": "Chart Pyramid",
+	"eula": "",
+	"vendor": "Marina Yesayan",
+	"license": "",
+	"id": "chart.shape",	
+	"newInstancePrefix": "PyramidChart",
+	"version": "1.0.0",	
+	"icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAGESURBVDhPjZG9TsJgFIbfFgr+Q4BJjYOjm4sxGt0c/RuM8QIcvQE1DAw4ewHExcQbcNNBowGJ0QVB4iA/igkqFJSCBCiefjTSSkt4krfnnO+075dzyjUJmBArplmcckywaERXg9mzHXryuFk6bB0YwKuxg4+KiHD2lhTGO+VmmBpshPxAv4tpU8lNMDRIlQu4zASpO8B0QXlSKqpdPYY78F1tIyjeoY+3s/pHrmLBPY29+QCrtXQYlEolDF0PA3S5jgpQW8xBUMbS0DFCPbIOKBcrtlrZKDysUqJHZ/D9lYWzcG68GTqzfV6jJr2oBy30r0ZXgEGKFhNRj4+tUdLmbwfPbxKWd0NwOpyswWAdglMjIRZFnPrnMDmq3KQx2PKFkck3IFg0bxtQq8sYcws48c6wmo0QTYiIJCTYrXTANbvKLnCIJEuIJQttA+9RHB6HsmYqepBnxIb9QJwKMrh/yuMxRT+ZqDXknqQQT5ehfMsdHMear7kqrHz32f9Tl5sYd9nxC6mPv3r07sCUAAAAAElFTkSuQmCC",
+	"webcomponents": [
+		{
+			"kind": "main",
+			"tag": "chart-shape",
+			"url": "https://my-cubeserv.github.io/SAP_CustomWidget_Pyramid/main-component.js",
+			"integrity": "",
+			"ignoreIntegrity": true
+		},
+		{
+			"kind": "styling",
+			"tag": "chart-style",
+			"url": "https://my-cubeserv.github.io/SAP_CustomWidget_Pyramid/styling-component.js",
+			"integrity": "",
+			"ignoreIntegrity": true
+		}
+	],
+	"imports": [
+		"datasource"
+	],
+	"properties": {
+		"value": {
+			"type": "number",
+			"description": "Select Top",
+			"default": 5
+		},
+		"color": {
+			"type": "string",
+			"description": "Text Color info",
+			"default": "#000000"
+		},
+		"fontsize": {
+			"type": "number",
+			"description": "Font size info",
+			"default": 16
+		},
+		"bgcolor1": {
+			"type": "string",
+			"description": "background color top 1 info",
+			"default": "#F12712"
+		},
+		"bgcolor2": {
+			"type": "string",
+			"description": "background color top 2 info",
+			"default": "#22b326"
+		},
+		"bgcolor3": {
+			"type": "string",
+			"description": "background color top 3 info",
+			"default": "#2681c5"
+		},
+		"bgcolor4": {
+			"type": "string",
+			"description": "background color top 4 info",
+			"default": "#ECE859"
+		},
+		"bgcolor5": {
+			"type": "string",
+			"description": "background color top 5 info",
+			"default": "#E035d3"
+		},
+		"bgcolor6": {
+			"type": "string",
+			"description": "background color top 6 info",
+			"default": "#E08135"
+		},
+		"selection": {
+			"type": "Selection"
+		}
+	},
+	"methods": {
+		"getSelection": {
+			"description": "get the currently selected node",
+			"returnType": "Selection",
+			"parameters": [],
+			"body": "return this.selection;"
+		},
+		"setvalue": {
+			"description": "Set the value.",
+			"parameters": [
+				{
+					"name": "newValue",
+					"type": "number",
+					"description": "Select top number"
+				}
+			],
+			"body": "this.value = newValue;"
+		},
+		"setcolor": {
+			"description": "Set color.",
+			"parameters": [
+				{
+					"name": "newColor",
+					"type": "string",
+					"description": "Select new color"
+				}
+			],
+			"body": "this.color = newColor;"
+		},
+		"setfontsize": {
+			"description": "Set font size.",
+			"parameters": [
+				{
+					"name": "newFontsize",
+					"type": "number",
+					"description": "Select font size"
+				}
+			],
+			"body": "this.fontsize = newFontsize;"
+		},
+		"setbgcolor1": {
+			"description": "Set bgcolor 1.",
+			"parameters": [
+				{
+					"name": "newbgColor1",
+					"type": "string",
+					"description": "Select new bgcolor1"
+				}
+			],
+			"body": "this.bgcolor1 = newbgColor1;"
+		},
+		"setbgcolor2": {
+			"description": "Set bgcolor 2.",
+			"parameters": [
+				{
+					"name": "newbgColor2",
+					"type": "string",
+					"description": "Select new bgcolor2"
+				}
+			],
+			"body": "this.bgcolor2 = newbgColor2;"
+		},
+		"setbgcolor3": {
+			"description": "Set bgcolor 3.",
+			"parameters": [
+				{
+					"name": "newbgColor3",
+					"type": "string",
+					"description": "Select new bgcolor3"
+				}
+			],
+			"body": "this.bgcolor3 = newbgColor3;"
+		},
+		"setbgcolor4": {
+			"description": "Set bgcolor 4.",
+			"parameters": [
+				{
+					"name": "newbgColor4",
+					"type": "string",
+					"description": "Select new bgcolor4"
+				}
+			],
+			"body": "this.bgcolor4 = newbgColor4;"
+		},
+		"setbgcolor5": {
+			"description": "Set bgcolor 5.",
+			"parameters": [
+				{
+					"name": "newbgColor5",
+					"type": "string",
+					"description": "Select new bgcolor5"
+				}
+			],
+			"body": "this.bgcolor5 = newbgColor5;"
+		},
+		"setbgcolor6": {
+			"description": "Set bgcolor 6.",
+			"parameters": [
+				{
+					"name": "newbgColor6",
+					"type": "string",
+					"description": "Select new bgcolor6"
+				}
+			],
+			"body": "this.bgcolor6 = newbgColor6;"
+		},
+		"getvalue": {
+			"returnType": "number",
+			"description": "Returns the selected top number.",
+			"body": "return this.value;"
+		},
+		"getcolor": {
+			"returnType": "string",
+			"description": "Returns selected color.",
+			"body": "return this.color;"
+		},
+		"getfontsize": {
+			"returnType": "number",
+			"description": "Returns the selected font size.",
+			"body": "return this.fontsize;"
+		},
+		"getbgcolor1": {
+			"returnType": "string",
+			"description": "Returns selected bgcolor 1.",
+			"body": "return this.bgcolor1;"
+		},
+		"getbgcolor2": {
+			"returnType": "string",
+			"description": "Returns selected bgcolor 2.",
+			"body": "return this.bgcolor2;"
+		},
+		"getbgcolor3": {
+			"returnType": "string",
+			"description": "Returns selected bgcolor 3.",
+			"body": "return this.bgcolor3;"
+		},
+		"getbgcolor4": {
+			"returnType": "string",
+			"description": "Returns selected bgcolor 4.",
+			"body": "return this.bgcolor4;"
+		},
+		"getbgcolor5": {
+			"returnType": "string",
+			"description": "Returns selected bgcolor 5.",
+			"body": "return this.bgcolor5;"
+		},
+		"getbgcolor6": {
+			"returnType": "string",
+			"description": "Returns selected bgcolor 6.",
+			"body": "return this.bgcolor6;"
+		},
+		"update": {
+			"description": "Rerenders the chart",
+			"parameters": []
+		}
+	},
+	"events": {
+		"onSelect": {
+			"description": "This event is fired, when the user selects a node in the chart."
+		}
+	},
+	"dataBindings": {
+		"myDataSource": {
+			"feeds": [
+				{
+					"id": "dimensions",
+					"description": "The dimensions feed",
+					"type": "dimension"
+				},
+				{
+					"id": "measures",
+					"description": "The measures feed",
+					"type": "mainStructureMember"
+				}
+			]
+		}
+	}
+}
