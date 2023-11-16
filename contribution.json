@@ -1,25 +1,25 @@
 {
-	"name": "Pyramid Chart",
-	"description": "Chart Pyramid",
+	"name": "Tachometer",
+	"description": "Chart Tachometer",
 	"eula": "",
 	"vendor": "Marina Yesayan",
 	"license": "",
 	"id": "chart.shape",	
-	"newInstancePrefix": "PyramidChart",
+	"newInstancePrefix": "TachometerChart",
 	"version": "1.0.0",	
 	"icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAGESURBVDhPjZG9TsJgFIbfFgr+Q4BJjYOjm4sxGt0c/RuM8QIcvQE1DAw4ewHExcQbcNNBowGJ0QVB4iA/igkqFJSCBCiefjTSSkt4krfnnO+075dzyjUJmBArplmcckywaERXg9mzHXryuFk6bB0YwKuxg4+KiHD2lhTGO+VmmBpshPxAv4tpU8lNMDRIlQu4zASpO8B0QXlSKqpdPYY78F1tIyjeoY+3s/pHrmLBPY29+QCrtXQYlEolDF0PA3S5jgpQW8xBUMbS0DFCPbIOKBcrtlrZKDysUqJHZ/D9lYWzcG68GTqzfV6jJr2oBy30r0ZXgEGKFhNRj4+tUdLmbwfPbxKWd0NwOpyswWAdglMjIRZFnPrnMDmq3KQx2PKFkck3IFg0bxtQq8sYcws48c6wmo0QTYiIJCTYrXTANbvKLnCIJEuIJQttA+9RHB6HsmYqepBnxIb9QJwKMrh/yuMxRT+ZqDXknqQQT5ehfMsdHMear7kqrHz32f9Tl5sYd9nxC6mPv3r07sCUAAAAAElFTkSuQmCC",
 	"webcomponents": [
 		{
 			"kind": "main",
 			"tag": "chart-shape",
-			"url": "https://my-cubeserv.github.io/SAP_CustomWidget_Pyramid/main-component.js",
+			"url": "https://my-cubeserv.github.io/CustomWidget_Tachometer/main-component.js",
 			"integrity": "",
 			"ignoreIntegrity": true
 		},
 		{
 			"kind": "styling",
 			"tag": "chart-style",
-			"url": "https://my-cubeserv.github.io/SAP_CustomWidget_Pyramid/styling-component.js",
+			"url": "https://my-cubeserv.github.io/CustomWidget_Tachometer/styling-component.js",
 			"integrity": "",
 			"ignoreIntegrity": true
 		}
