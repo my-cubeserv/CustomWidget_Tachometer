@@ -1,12 +1,16 @@
 (function() {
 let tmpl = document.createElement('template');	
 tmpl.innerHTML = `
-<div>
-	<canvas id="shapes" class="PyramidChart" is="chart-shape"></canvas>
-</div>
+<div class="Tachometer" id="Tachometer">
+      <div class="chartBox" id="chartBox">
+        <canvas id="Tachometer"></canvas>
+      </div>
+    </div>
+    <script type="text/javascript" src="tachometer_new.js"></script>
+
 `;
 
-customElements.define('chart-shape', class PyramidChart extends HTMLElement {
+customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
 	constructor() {
 		super();			
 		this.style.height = "100%";
@@ -14,9 +18,16 @@ customElements.define('chart-shape', class PyramidChart extends HTMLElement {
 		this._props = {};
 		this._shadowRoot = this.attachShadow({mode: "open"});
 		this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-		this._shadowRoot.getElementById("shapes").addEventListener("submit", this._submit.bind(this));
+		this._shadowRoot.getElementById("Tachometer").addEventListener("submit", this._submit.bind(this));
 		this._firstConnection = false;
-		this.wData = [];		
+		this.wData = [];
+		this.properties = {
+	       color: "#000000",
+	       value: 5,
+		   fontsize: 20,
+		   bgcolor: "#F12712"
+		};
+				
 	}
 	get selection() {
             const result = { ...this._selection, ...(this._selection || {}).measures_0 };
@@ -170,61 +181,107 @@ customElements.define('chart-shape', class PyramidChart extends HTMLElement {
 		return 	alldata;
 	}
 
-	//Draw pyramid
+	//Draw tachometer
 	render(nvalue, ncolor, ndata) {
 		
-		var tempwith = this._shadowRoot.host.offsetWidth;
-		var scolor = [this.bgcolor1, this.bgcolor2, this.bgcolor3, this.bgcolor4, this.bgcolor5, this.bgcolor6];
-		var number = this.value;
-		var j = tempwith/number/2 - 2;
-		var totalnumber = j*number + 10;
-		var divwith = totalnumber + 100;
+		   const data = {
+  //    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],  // legend
+      datasets: [{
+        label: 'Percentage value',
+        data: [20, 20, 10, 10, 20, 30],
+        backgroundColor: [
+          'rgba(255, 26, 104, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(0, 0, 0, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 26, 104, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(0, 0, 0, 1)'
+        ],
+        borderWidth: 1,
+		circumference: 180,
+		rotation: 270,
+		cutot:'95%',
+		borderRadius: 5,
+		 needleValue: 55
+      }]
+    };
+	const gaugeNeedle ={
+	id: 'gaugeNeedle',
+	afterDatasetsDraw(chart, args, plugins){
+	const { ctx, data } = chart;
+	ctx.save();
+	const needleValue = data.datasets[0].needleValue;
 
-		if(ndata.length < number)
-		{
-			number =ndata.length;
-		}
-		
-		
-		if(this.shadowRoot.getElementById("shapes"))
-		{
-			this.shadowRoot.getElementById("shapes").width = totalnumber + tempwith/2;
-			this.shadowRoot.getElementById("shapes").height = totalnumber + 10;
-			if(ndata)
-			{
-				for(var i=number; i>=1; i--)
-				{
-					this.drawShapes(totalnumber,0,j*i,j*i, scolor[i-1], i, ndata[i-1][0]);				
-				
-				};	
-			};			
-				
-		};
+	console.log(chart.getDatasetMeta(0).data[0].x)
+	const xCenter = chart.getDatasetMeta(0).data[0].x;
+	const yCenter = chart.getDatasetMeta(0).data[0].y;
+	const outerRadius = chart.getDatasetMeta(0).data[0].outerRadius -6;
+
+	const angle = Math.PI;
+
+	const dataTotal = data.datasets[0].data.reduce((a,b) =>
+	a + b, 0);
+	let circumference  = ((chart.getDatasetMeta(0).data[0].circumference / Math.PI) /data.datasets[0].data[0])* needleValue;
+	const needleValueAngle = circumference + 1.5;
+
+	ctx.translate(xCenter, yCenter);
+	ctx.rotate(angle * needleValueAngle);
+
+	//Needle
+	ctx.beginPath();
+	ctx.strokeStyle = 'darkgrey';
+	ctx.fillStyle = 'darkgrey';
+
+	ctx.moveTo(0 - 5, 0);
+
+	ctx.lineTo(0, -outerRadius);
+	ctx.lineTo(0 + 5, 0);
+	ctx.stroke();
+	ctx.fill();
+
+
+	//dot
+	ctx.beginPath();
+	ctx.arc(0,0, 10, angle * 0 , angle *2, false)
+	ctx.fill();
+	ctx.restore();
 	}
-	
-	drawShapes(x,y,h,w, scolor, j, stext) {	
-			
-		const canvas = this.shadowRoot.getElementById("shapes");
-		var width = canvas.width;
-		const height = canvas.height;
-		const ctx = canvas.getContext('2d')	; 
-		var currfont = this.fontsize + "px serif";
+}
+
+    // config 
+    const config = {
+      type: 'doughnut',
+      data,
+      options: {
+	  aspectRation: 1.8,
+        plugins:
+		{
+		legend: {
+		display: false
 		
-		if (canvas.getContext) {
-	
-			ctx.beginPath();
-			ctx.moveTo(x, y);
-			ctx.lineTo(x-w, y+h);
-			ctx.lineTo(x+w, y+h);
-			ctx.fillStyle = scolor;			
-			ctx.fill();
-			ctx.textBaseline = "middle";
-			ctx.textAlign = "center";
-			ctx.fillStyle = this.color;
-			ctx.font = currfont;
-			var tpoint = width/2;
-			ctx.fillText(stext, tpoint, y+h-20);
 		}
+        }
+      },
+	  plugins:[gaugeNeedle]
+    };
+
+    // render init block
+    const Tachometer = new Chart(
+      document.getElementById('Tachometer'),
+      config
+    ); 
+	}
+		
 	}	
     });
 })();
