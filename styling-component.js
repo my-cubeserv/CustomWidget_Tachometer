@@ -54,16 +54,16 @@
             }));
             return false;
         }
-		get color() {
+		getcolor() {
 			return this._shadowRoot.getElementById("ap_textcolor").value;
 		}
-		get fontsize() {
+		getfontsize() {
             return this._shadowRoot.getElementById("ap_fontsize").value;
         }
-	    set color(v) {
+	    setcolor(v) {
             this._shadowRoot.getElementById("ap_textcolor").value = v;
         }
-		set fontsize(v) {
+		setfontsize(v) {
             this._shadowRoot.getElementById("ap_fontsize").value = v;
         }
     }
