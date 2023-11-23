@@ -18,4 +18,17 @@ tmpl.innerHTML = `
       </div>
     </div>
 `;
+
+		customElements.define('chart-tachometer', class Tachometer extends HTMLElement {	
+	constructor() {
+		super();			
+		this.style.height = "100%";
+		this.style.display = "block";
+		this._shadowRoot = this.attachShadow({mode: "open"});
+		this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
+		this._shadowRoot.getElementById("Tachometer").addEventListener("submit", this._submit.bind(this));
+		this._firstConnection = false;
+	
+	} 
+	});
 })();
