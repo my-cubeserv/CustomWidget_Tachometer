@@ -6,6 +6,7 @@ tmpl.innerHTML = `
         <canvas id="Tachometer"></canvas>
       </div>
     </div>
+
 `;
 
 customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
@@ -20,10 +21,8 @@ customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
 		this._firstConnection = false;
 		this.wData = [];
 		this.properties = {
-	       color: "#000000",
-	       value: 5,
-		   fontsize: 20,
-		   bgcolor: "#F12712"
+	     //  color: "#000000",
+		  // fontsize: 20
 		};
 				
 	}
@@ -36,9 +35,8 @@ customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
 			this.dispatchEvent(new CustomEvent("propertiesChanged", {
 					detail: {
 						properties: {
-							value: this.value,
-							color: this.color,
-							fontsize: this.fontsize
+						//	color: this.color,
+						//	fontsize: this.fontsize
 						}
 					}
 			}));
@@ -67,7 +65,7 @@ customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
 			this.dispatchEvent(new Event("onResultChanged"));
 		}
 		
-		if ("value" in oChangedProperties) {
+	/*	if ("value" in oChangedProperties) {
 				this.value = oChangedProperties["value"];
 			}
 		if ("color" in oChangedProperties) {
@@ -76,7 +74,7 @@ customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
 		if ("fontsize" in oChangedProperties) {
 				this.fontsize = oChangedProperties["fontsize"];
 			} 
-		this.redraw();
+		this.redraw();*/
     }
      redraw() {
 		if (!this._shadowRoot) { return; }
