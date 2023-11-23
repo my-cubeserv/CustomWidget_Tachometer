@@ -29,7 +29,7 @@ customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
 		};
 				
 	}
-	get selection() {
+	getselection() {
             const result = { ...this._selection, ...(this._selection || {}).measures_0 };
             return Object.values(result).length > 0 ? result : undefined;
         }
