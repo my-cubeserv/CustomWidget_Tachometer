@@ -45,7 +45,6 @@
             this.dispatchEvent(new CustomEvent('propertiesChanged', {
                 "detail": {
                     "properties": {
-                        value: this.value,
                         color: this.color,
 						fontsize: this.fontsize
                     }
@@ -59,12 +58,13 @@
 		getfontsize() {
             return this._shadowRoot.getElementById("ap_fontsize").value;
         }
-/*	    setcolor(v) {
+	    setcolor(v) {
             this._shadowRoot.getElementById("ap_textcolor").value = v;
-        }*/
+        }
 		setfontsize(v) {
             this._shadowRoot.getElementById("ap_fontsize").value = v;
         }
+		
     }
     customElements.define('chart-style', TachometerProperties);
 })();
