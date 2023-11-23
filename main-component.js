@@ -1,27 +1,17 @@
-const myDataSource = this._props.myDataSource;
-const gaugeNeedle ={
-	id: 'gaugeNeedle',
-	afterDatasetsDraw(chart, args, plugins){
-	const { ctx, data } = chart;
-	ctx.save();
-	const needleValue = data.datasets[0].needleValue;
-
-	console.log(chart.getDatasetMeta(0).data[0].x)
-	const xCenter = chart.getDatasetMeta(0).data[0].x;
-	const yCenter = chart.getDatasetMeta(0).data[0].y;
-	const outerRadius = chart.getDatasetMeta(0).data[0].outerRadius -6;
-
-	const angle = Math.PI;
-
-	const dataTotal = data.datasets[0].data.reduce((a,b) =>
-	a + b, 0);
-	let circumference  = ((chart.getDatasetMeta(0).data[0].circumference / Math.PI) /data.datasets[0].data[0])* needleValue;
-	const needleValueAngle = circumference + 1.5;
-
-
 (function() {
+	
 let tmpl = document.createElement('template');	
 tmpl.innerHTML = `
+<style>      
+      .chartCard {
+        width: 200;
+        height: 200;  
+      }
+      .chartBox {
+        width: 200px;
+
+      }
+    </style>
 <div class="Tachometer" id="Tachometer">
       <div class="chartBox" id="chartBox">
         <canvas id="Tachometer"></canvas>
@@ -29,8 +19,8 @@ tmpl.innerHTML = `
     </div>
 `;
 
-customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
-	constructor() {
+customElements.define('chart-tachometer', class Tachometer extends HTMLElement {	
+constructor() {
 		super();			
 		this.style.height = "100%";
 		this.style.display = "block";
@@ -39,35 +29,24 @@ customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
 		this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
 		this._shadowRoot.getElementById("Tachometer").addEventListener("submit", this._submit.bind(this));
 		this._firstConnection = false;
-		this.wData = [];
-		this.properties = {
-	     //  color: "#000000",
-		  // fontsize: 20
-		};
-				
+		this.wData = [];					
 	}
+	
 	getselection() {
             const result = { ...this._selection, ...(this._selection || {}).measures_0 };
             return Object.values(result).length > 0 ? result : undefined;
         }
+		
 	_submit(e) {
-			e.preventDefault();
-			this.dispatchEvent(new CustomEvent("propertiesChanged", {
-					detail: {
-						properties: {
-						//	color: this.color,
-						//	fontsize: this.fontsize
-						}
-					}
-			}));
+			e.preventDefault();		
+		
 	}
 	//When the widget is added to the html DOM of the page
 	connectedCallback(){
 		this._firstConnection = true;
 		this.redraw();
 	}
-
-	 //When the widget is removed from the html DOM of the page
+		 //When the widget is removed from the html DOM of the page
 	disconnectedCallback(){
 		this._connected = false;
 	}
@@ -75,8 +54,7 @@ customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
 	onCustomWidgetBeforeUpdate(oChangedProperties) {
 		this._props = { ...this._props, ...oChangedProperties };
 	}
-
-     //When the custom widget is updated
+	  //When the custom widget is updated
 	onCustomWidgetAfterUpdate(oChangedProperties) {
 		this._needsRedraw = true;
 		this._selection = {};
@@ -84,22 +62,11 @@ customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
 			// trigger onResultChanged event
 			this.dispatchEvent(new Event("onResultChanged"));
 		}
-		
-	/*	if ("value" in oChangedProperties) {
-				this.value = oChangedProperties["value"];
-			}
-		if ("color" in oChangedProperties) {
-				this.color = oChangedProperties["color"];
-			} 
-		if ("fontsize" in oChangedProperties) {
-				this.fontsize = oChangedProperties["fontsize"];
-			} 
-		this.redraw();*/
     }
-     redraw() {
+	 redraw() {
 		if (!this._shadowRoot) { return; }
-	   this._shadowRoot.textContent = "";
-	   // check the result state (could be "loading", "success" or "error")
+		this._shadowRoot.textContent = "";
+		// check the result state (could be "loading", "success" or "error")
 		const myDataSource = this._props.myDataSource;
 		if (myDataSource)
 		{
@@ -122,17 +89,16 @@ customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
 				}
 			}
 		}
-	}
-	redrawChart() {            
-		// indicate result state: "error" and an appropriate message
-
-		if (!myDataSource.data.length
-			|| Object.keys(myDataSource.metadata.dimensions).length === 0
-			|| Object.keys(myDataSource.metadata.mainStructureMembers).length === 0) {
-			this._shadowRoot.innerHTML = "<h1>No data</h1>";
-			return;
-		}
-		this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
+	 }
+	 // draw chart
+	 redrawChart() {   
+		 if (!myDataSource.data.length
+				|| Object.keys(myDataSource.metadata.dimensions).length === 0
+				|| Object.keys(myDataSource.metadata.mainStructureMembers).length === 0) {
+				this._shadowRoot.innerHTML = "<h1>No data</h1>";
+				return;
+			}
+			this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
 		
 		const data = myDataSource.data;
 		
@@ -146,17 +112,13 @@ customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
 			}
 			this.render();
 		}
-	}
-	
-        //When the custom widget is removed from the canvas or the analytic application is closed
-        onCustomWidgetDestroy(){
+	 }
+	 
+	 //When the custom widget is removed from the canvas or the analytic application is closed
+    onCustomWidgetDestroy(){
         }
 	//When the custom widget resized
-	onCustomWidgetResize(ndata) {
-            this.width = this._shadowRoot.host.offsetWidth;
-            this.height = this._shadowRoot.host.offsetHeight;
-            this._needsRedraw = true;
-			this.redraw();
+	onCustomWidgetResize() {
         }
 	//Collect data array
 	parseData(ndata){	
@@ -171,13 +133,11 @@ customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
 		 });
 		 alldata.sort(function(a, b){return b[0] - a[0]});			
 		return 	alldata;
-	}
-
+	}	
+	
 	//Draw tachometer
 	async render() {
-	
-	await getScriptPromisify("https://my-cubeserv.github.io/CustomWidget_Tachometer/tachometer_functions.js);
-		
+		await getScriptPromisify("https://my-cubeserv.github.io/CustomWidget_Tachometer/tachometer_functions.js);
 		   const data = {
   //    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],  // legend
       datasets: [{
@@ -209,57 +169,72 @@ customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
 		 needleValue: 55
       }]
     };
-		   // config 
-    const config = {
-      type: 'doughnut',
-      data,
-      options: {
-	  aspectRation: 1.8,
-        plugins:
-		{
-		legend: {
-		display: false
-		
+	const gaugeNeedle ={
+		id: 'gaugeNeedle',
+		afterDatasetsDraw(chart, args, plugins){
+			const { ctx, data } = chart;
+			ctx.save();
+			const needleValue = data.datasets[0].needleValue;
+
+			console.log(chart.getDatasetMeta(0).data[0].x)
+			const xCenter = chart.getDatasetMeta(0).data[0].x;
+			const yCenter = chart.getDatasetMeta(0).data[0].y;
+			const outerRadius = chart.getDatasetMeta(0).data[0].outerRadius -6;
+
+			const angle = Math.PI;
+
+			const dataTotal = data.datasets[0].data.reduce((a,b) =>
+			a + b, 0);
+			let circumference  = ((chart.getDatasetMeta(0).data[0].circumference / Math.PI) /data.datasets[0].data[0])* needleValue;
+			const needleValueAngle = circumference + 1.5;
+
+			ctx.translate(xCenter, yCenter);
+			ctx.rotate(angle * needleValueAngle);
+
+			//Needle
+			ctx.beginPath();
+			ctx.strokeStyle = 'darkgrey';
+			ctx.fillStyle = 'darkgrey';
+
+			ctx.moveTo(0 - 5, 0);
+
+			ctx.lineTo(0, -outerRadius);
+			ctx.lineTo(0 + 5, 0);
+			ctx.stroke();
+			ctx.fill();
+
+
+			//dot
+			ctx.beginPath();
+			ctx.arc(0,0, 10, angle * 0 , angle *2, false)
+			ctx.fill();
+			ctx.restore();
 		}
-        }
-      },
-	  plugins:[gaugeNeedle]
-    };
-
-    // render init block
-    const Tachometer = new Chart(
-      document.getElementById('Tachometer'),
-      config
-	      ); 
-	
-	ctx.translate(xCenter, yCenter);
-	ctx.rotate(angle * needleValueAngle);
-
-	//Needle
-	ctx.beginPath();
-	ctx.strokeStyle = 'darkgrey';
-	ctx.fillStyle = 'darkgrey';
-
-	ctx.moveTo(0 - 5, 0);
-
-	ctx.lineTo(0, -outerRadius);
-	ctx.lineTo(0 + 5, 0);
-	ctx.stroke();
-	ctx.fill();
-
-
-	//dot
-	ctx.beginPath();
-	ctx.arc(0,0, 10, angle * 0 , angle *2, false)
-	ctx.fill();
-	ctx.restore();
 	}
-}
 
- 
+	// config 
+	const config = {
+		  type: 'doughnut',
+		  data,
+		  options: {
+		  aspectRation: 1.8,
+			plugins:
+			{
+			legend: {
+			display: false
+			
+			}
+			}
+		  },
+		  plugins:[gaugeNeedle]
+		};
 
-}	
-	}
-	
+		// render init block
+		const myChart = new Chart(
+		  document.getElementById('Tachometer'),
+		  config
+		); 
+	}		
+	//end function	
    });
 })();
