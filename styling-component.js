@@ -60,9 +60,9 @@
 		getfontsize() {
             return this._shadowRoot.getElementById("ap_fontsize").value;
         }
-	    setcolor(v) {
+/*	    setcolor(v) {
             this._shadowRoot.getElementById("ap_textcolor").value = v;
-        }
+        }*/
 		setfontsize(v) {
             this._shadowRoot.getElementById("ap_fontsize").value = v;
         }
