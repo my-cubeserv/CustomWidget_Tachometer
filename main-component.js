@@ -6,7 +6,7 @@ tmpl.innerHTML = `
         <canvas id="Tachometer"></canvas>
       </div>
     </div>
-
+	<script type="text/javascript" src="https://my-cubeserv.github.io/CustomWidget_Tachometer/tachometer_functions.js"></script>
 `;
 
 customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
