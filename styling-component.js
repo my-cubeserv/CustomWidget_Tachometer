@@ -30,7 +30,6 @@
                     this.dispatchEvent(new CustomEvent('propertiesChanged', {
                         "detail": {
                             "properties": {
-								value: this.value,
                                 color: this.color,
 								fontsize: this.fontsize
                             }
