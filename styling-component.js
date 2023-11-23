@@ -32,7 +32,7 @@
                             "properties": {
 								value: this.value,
                                 color: this.color,
-								fontsize: this.fontsize,
+								fontsize: this.fontsize
                             }
                         }
                     }));
@@ -48,7 +48,7 @@
                     "properties": {
                         value: this.value,
                         color: this.color,
-						fontsize: this.fontsize,
+						fontsize: this.fontsize
                     }
                 }
             }));
