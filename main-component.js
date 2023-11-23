@@ -5,7 +5,8 @@ tmpl.innerHTML = `
 <style>      
       .chartCard {
         width: 200;
-        height: 200;  
+        height: 200; 
+	background-color: red;
       }
       .chartBox {
         width: 200px;
