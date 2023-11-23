@@ -6,7 +6,8 @@ tmpl.innerHTML = `
         <canvas id="Tachometer"></canvas>
       </div>
     </div>
-    <script type="text/javascript" src="https://my-cubeserv.github.io/CustomWidget_Tachometer/tachometer_functions.js"></script>
+    <script type="text/javascript" src="tachometer_new.js"></script>
+
 `;
 
 customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
@@ -39,13 +40,7 @@ customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
 						properties: {
 							value: this.value,
 							color: this.color,
-							fontsize: this.fontsize,
-							bgcolor1: this.bgcolor1,
-							bgcolor2: this.bgcolor2,
-							bgcolor3: this.bgcolor3,
-							bgcolor4: this.bgcolor4,
-							bgcolor5: this.bgcolor5,
-							bgcolor6: this.bgcolor6
+							fontsize: this.fontsize
 						}
 					}
 			}));
@@ -83,24 +78,6 @@ customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
 		if ("fontsize" in oChangedProperties) {
 				this.fontsize = oChangedProperties["fontsize"];
 			} 
-		if ("bgcolor1" in oChangedProperties) {
-				this.bgcolor1 = oChangedProperties["bgcolor1"];
-			} 
-		if ("bgcolor2" in oChangedProperties) {
-				this.bgcolor2 = oChangedProperties["bgcolor2"];
-			} 
-		if ("bgcolor3" in oChangedProperties) {
-				this.bgcolor3 = oChangedProperties["bgcolor3"];
-			} 			
-		if ("bgcolor4" in oChangedProperties) {
-			this.bgcolor4 = oChangedProperties["bgcolor4"];
-		} 
-		if ("bgcolor5" in oChangedProperties) {
-			this.bgcolor5 = oChangedProperties["bgcolor5"];
-		} 
-		if ("bgcolor6" in oChangedProperties) {
-			this.bgcolor6 = oChangedProperties["bgcolor6"];
-		} 
 		this.redraw();
     }
      redraw() {
@@ -282,5 +259,5 @@ customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
 	}
 		
 	}	
-    });
+   });
 })();
