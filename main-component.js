@@ -6,8 +6,6 @@ tmpl.innerHTML = `
         <canvas id="Tachometer"></canvas>
       </div>
     </div>
-    <script type="text/javascript" src="tachometer_new.js"></script>
-
 `;
 
 customElements.define('chart-tachometer', class Tachometer extends HTMLElement {
