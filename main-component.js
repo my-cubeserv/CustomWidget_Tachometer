@@ -28,15 +28,14 @@ constructor() {
 	this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
 	this._shadowRoot.getElementById("Tachometer").addEventListener("submit", this._submit.bind(this));
 	this._firstConnection = false;
-
-    this.render();		
-	} 
+        this.render();		
+} 
 
 	//Draw tachometer
 	async render() {
 		alert ("Hallo");
 	}		
 	//end function	
-	}
+	
    });
 })();
