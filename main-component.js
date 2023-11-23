@@ -12,129 +12,26 @@ tmpl.innerHTML = `
 
       }
     </style>
-<div class="Tachometer" id="Tachometer">
+<div class="chartCard" id="Tachometer">
       <div class="chartBox" id="chartBox">
-        <canvas id="Tachometer"></canvas>
+        <canvas id="Tachometer" class="Tachometer" is="chart-tachometer"></canvas>
       </div>
     </div>
 `;
 
 customElements.define('chart-tachometer', class Tachometer extends HTMLElement {	
 constructor() {
-		super();			
-		this.style.height = "100%";
-		this.style.display = "block";
-		this._props = {};
-		this._shadowRoot = this.attachShadow({mode: "open"});
-		this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-		this._shadowRoot.getElementById("Tachometer").addEventListener("submit", this._submit.bind(this));
-		this._firstConnection = false;
-		this.wData = [];					
-	}
-	
-	getselection() {
-            const result = { ...this._selection, ...(this._selection || {}).measures_0 };
-            return Object.values(result).length > 0 ? result : undefined;
-        }
-		
-	_submit(e) {
-			e.preventDefault();		
-		
-	}
-	//When the widget is added to the html DOM of the page
-	connectedCallback(){
-		this._firstConnection = true;
-		this.redraw();
-	}
-		 //When the widget is removed from the html DOM of the page
-	disconnectedCallback(){
-		this._connected = false;
-	}
-	 //When the custom widget is updated
-	onCustomWidgetBeforeUpdate(oChangedProperties) {
-		this._props = { ...this._props, ...oChangedProperties };
-	}
-	  //When the custom widget is updated
-	onCustomWidgetAfterUpdate(oChangedProperties) {
-		this._needsRedraw = true;
-		this._selection = {};
-		if (oChangedProperties.myDataSource && !this._props.designMode) {
-			// trigger onResultChanged event
-			this.dispatchEvent(new Event("onResultChanged"));
-		}
-    }
-	 redraw() {
-		if (!this._shadowRoot) { return; }
-		this._shadowRoot.textContent = "";
-		// check the result state (could be "loading", "success" or "error")
-		const myDataSource = this._props.myDataSource;
-		if (myDataSource)
-		{
-			switch (myDataSource.state) {
-				case "loading": {
-					this._shadowRoot.innerHTML = "Loading...";
-					return;
-				}
-				case "error": {
-					if (myDataSource.messages.length) {
-						this._shadowRoot.innerHTML = "<h1>Could not render chart</h1>" + (myDataSource.messages || []).map(m => `<b>${m.level}</b>: ${m.message}`).join("br");
-					} else {
-						// in case of no data an appropriate message will be show
-						this._shadowRoot.innerHTML = "<h1>No data</h1>";
-					}
-					return;
-				} case "success": {
-					this.redrawChart();
-					return;
-				}
-			}
-		}
-	 }
-	 // draw chart
-	 redrawChart() {   
-		 if (!myDataSource.data.length
-				|| Object.keys(myDataSource.metadata.dimensions).length === 0
-				|| Object.keys(myDataSource.metadata.mainStructureMembers).length === 0) {
-				this._shadowRoot.innerHTML = "<h1>No data</h1>";
-				return;
-			}
-			this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-		
-		const data = myDataSource.data;
-		
-		if(data)
-		{
-			this.wData = this.parseData(JSON.parse(JSON.stringify(data)));
-							
-			if (this.wData.length === 0) {
-				this._shadowRoot.innerHTML = "<h1>Select \"Include Parent Elements\" in Hierarchy Menu.</h1>";
-				return;
-			}
-			this.render();
-		}
-	 }
-	 
-	 //When the custom widget is removed from the canvas or the analytic application is closed
-    onCustomWidgetDestroy(){
-        }
-	//When the custom widget resized
-	onCustomWidgetResize() {
-        }
-	//Collect data array
-	parseData(ndata){	
-		
-		let alldata = [];
-		
-		ndata.forEach(function (item) {
-			if(item.dimensions_0 && item.measures_0)
-			{
-				alldata.push([item.measures_0.raw, item.dimensions_0.id ]);
-			}					
-		 });
-		 alldata.sort(function(a, b){return b[0] - a[0]});			
-		return 	alldata;
-	}	
-	
+	super();			
+	this.style.height = "100%";
+	this.style.display = "block";
+	this._shadowRoot = this.attachShadow({mode: "open"});
+	this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
+	this._shadowRoot.getElementById("Tachometer").addEventListener("submit", this._submit.bind(this));
+	this._firstConnection = false;
+
+    this.render();		
+	} 
+
 	//Draw tachometer
 	async render() {
 		await getScriptPromisify("https://my-cubeserv.github.io/CustomWidget_Tachometer/tachometer_functions.js);
@@ -236,5 +133,6 @@ constructor() {
 		); 
 	}		
 	//end function	
+	}
    });
 })();
