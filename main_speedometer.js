@@ -373,4 +373,4 @@ constructor() {
     }
 	
 };
-	customElements.define("chart-speedometer", Speedometer); 
+	customElements.define("chart-speedometer", speedometer); 
