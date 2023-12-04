@@ -1,7 +1,6 @@
 let tmpl = document.createElement('template');	
 tmpl.innerHTML = `
 <style>
-
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -172,7 +171,6 @@ top: 7px;
 .speedometer-scale-19.active{
 	background-color: red;
 }
-
 
 .speedometer-center_hide{
 	width: 250px;
@@ -347,7 +345,6 @@ constructor() {
 	this.style.display = "block";
 	this._shadowRoot = this.attachShadow({mode: "open"});
 	this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-
 	this._firstConnection = false;
 	
 	} 
@@ -355,7 +352,8 @@ constructor() {
 		
 	//When the widget is added to the html DOM of the page
 	connectedCallback() {
-   		//this._firstConnection = true;
+   		this._firstConnection = true;
+
   	}
 
 	//When the widget is removed from the html DOM of the page
