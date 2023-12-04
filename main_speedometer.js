@@ -1,4 +1,3 @@
-	
 let tmpl = document.createElement('template');	
 tmpl.innerHTML = `
 <style>
@@ -289,13 +288,14 @@ top: 7px;
 	transform: rotate(180deg);
 }
 </style>
+
 <div class="speedometer" id="Speedometer">
 <div class="speedometer-text">
-<div class="static">Speed</div>
-<div class="dymanic">
-<span class="km">0</span>
-<span class="unit">KMPH</span>
-</div>
+	<div class="static">Speed</div>
+	<div class="dymanic">
+		<span class="km">0</span>
+		<span class="unit">KMPH</span>
+	</div>
 </div>
 <div class="center-point"></div>
 <div class="speedometer-center_hide"></div>
@@ -337,9 +337,7 @@ top: 7px;
 <div class="speedometer-scale speedometer-scale-30 active"></div>
 <div class="speedometer-scale speedometer-scale-31 active"></div>
 
-</div>
-
-	
+</div>	
 `;
 
 class speedometer extends HTMLElement {	
@@ -354,21 +352,15 @@ constructor() {
 	
 	} 
 	
-	get selection() {
-
-        }
-	_submit(e) {
-			
-	}
-	
+		
 	//When the widget is added to the html DOM of the page
 	connectedCallback() {
-   		this._firstConnection = true;
+   		//this._firstConnection = true;
   	}
 
 	//When the widget is removed from the html DOM of the page
 	disconnectedCallback() {
-   this._connected = false;
+  // this._connected = false;
   }
   //When the custom widget is updated
  onCustomWidgetBeforeUpdate(oChangedProperties) {
@@ -379,7 +371,6 @@ constructor() {
  onCustomWidgetAfterUpdate(oChangedProperties) {
 
     }
-
 	
 };
 	customElements.define("chart-speedometer", Speedometer); 
