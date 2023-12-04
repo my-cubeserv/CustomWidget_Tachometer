@@ -351,31 +351,19 @@ constructor() {
 	this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
 
 	this._firstConnection = false;
-	this.wData = [];
-		this.properties = {
-	     
-		};	
+	
 	} 
 	
 	get selection() {
-            const result = { ...this._selection, ...(this._selection || {}).measures_0 };
-            return Object.values(result).length > 0 ? result : undefined;
+
         }
 	_submit(e) {
-			e.preventDefault();
-			this.dispatchEvent(new CustomEvent("propertiesChanged", {
-					detail: {
-						properties: {
-							
-						}
-					}
-			}));
+			
 	}
 	
 	//When the widget is added to the html DOM of the page
 	connectedCallback() {
    		this._firstConnection = true;
-
   	}
 
 	//When the widget is removed from the html DOM of the page
@@ -384,69 +372,14 @@ constructor() {
   }
   //When the custom widget is updated
  onCustomWidgetBeforeUpdate(oChangedProperties) {
-		this._props = { ...this._props, ...oChangedProperties };
-	// this.redraw();
+
 	}
 	
  //When the custom widget is updated
  onCustomWidgetAfterUpdate(oChangedProperties) {
-		/*this._needsRedraw = true;
-		this._selection = {};
-		if (oChangedProperties.myDataSource && !this._props.designMode) {
-			// trigger onResultChanged event
-			this.dispatchEvent(new Event("onResultChanged"));
-		}
-		
-				}
-		this.redraw();*/
+
     }
-	
 
-	redrawChart() {            
-		// indicate result state: "error" and an appropriate message
-	/*	const myDataSource = this._props.myDataSource;
-		this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-				
-		const data = myDataSource.data;
-		
-		if(data)
-		{
-			this.wData = this.parseData(JSON.parse(JSON.stringify(data)));
-		}
-		else {
-			this.wData = 0
-		}
-			
-		this.width = this._shadowRoot.host.offsetWidth;
-		this.height = this._shadowRoot.host.offsetHeight;
-		this._needsRedraw = true;
-		this.resize(this.width,this.height);
-		this.render(this.wData);
-		this.setstyles(this.wData);*/
-	}
-
-	//Collect data array
-	parseData(ndata){	
-		
-		let alldata = [];
-		
-		ndata.forEach(function (item) {
-			if( item.measures_0)
-			{
-				alldata.push([item.measures_0.raw ]);
-			}					
-		 });
-		 alldata.sort(function(a){return a[0]});			
-		return 	alldata;
-	}
 	
-	//When the custom widget resized
-onCustomWidgetResize() {
-	this.width = this._shadowRoot.host.offsetWidth;
-        this.height = this._shadowRoot.host.offsetHeight;
-        this._needsRedraw = true;
-	this.resize(this.width,this.height);
-	//this.redraw();
-}	
 };
 	customElements.define("chart-speedometer", Speedometer); 
