@@ -7,7 +7,7 @@ tmpl.innerHTML = `
 	padding: 0;
 	box-sizing: border-box;
 }
-.speedometer-container{
+.speedometer{
 	width: 300px;
 	height: 300px;
 	border: 2px solid black;
@@ -289,7 +289,7 @@ top: 7px;
 	transform: rotate(180deg);
 }
 </style>
-<div class="speedometer-container">
+<div class="speedometer" id="Speedometer">
 <div class="speedometer-text">
 <div class="static">Speed</div>
 <div class="dymanic">
@@ -342,7 +342,7 @@ top: 7px;
 	
 `;
 
-class speedometer-container extends HTMLElement {	
+class speedometer extends HTMLElement {	
 constructor() {
 	super();			
 	this.style.height = "100%";
@@ -449,4 +449,4 @@ onCustomWidgetResize() {
 	//this.redraw();
 }	
 };
-	customElements.define("chart-speedometer",speedometer-container); 
+	customElements.define("chart-speedometer", Speedometer); 
