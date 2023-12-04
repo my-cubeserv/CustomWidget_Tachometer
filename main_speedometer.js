@@ -449,4 +449,4 @@ onCustomWidgetResize() {
 	//this.redraw();
 }	
 };
-	customElements.define("chart-tachometer",Tachometer); 
+	customElements.define("chart-speedometer",speedometer-container); 
