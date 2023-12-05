@@ -59,6 +59,16 @@ tmpl.innerHTML = `
 	text-align: center;	
 	width: 100%;
 	  } 
+    .previewImage {
+    position: absolute;
+	top: 0px;
+	left: 0px;
+	padding-left: 8px;	
+	margin-bottom: 0px;
+	margin-top: 8px;
+	padding-bottom: 0px;
+	vertical-align: top;
+   }
     </style>
      <div class="chartCard" id="chartcard">	
 	<div class="chartBox" id="chartbox">
