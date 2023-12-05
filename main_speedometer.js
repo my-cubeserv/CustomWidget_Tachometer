@@ -69,7 +69,8 @@ tmpl.innerHTML = `
 <div id = "DataLablesLeft" class="labelleft" ></div>
 <div id = "DataLablesTop" class="labeltop" ></div>
 <div id = "DataLablesRight" class="labelright" ></div>	
-<div id = "DataInfo" class="datainfo"></div>	
+<div id = "DataInfo" class="datainfo"></div>
+<div id="previewImage" class="previewImage"> </div>
 `;
 
 class Tachometer extends HTMLElement {	
@@ -150,6 +151,7 @@ constructor() {
 	connectedCallback() {
    		this._firstConnection = true;
 		this.redraw();
+		this.convert_to_image();
   	}
 
 	//When the widget is removed from the html DOM of the page
@@ -160,6 +162,7 @@ constructor() {
  onCustomWidgetBeforeUpdate(oChangedProperties) {
 		this._props = { ...this._props, ...oChangedProperties };
 	 this.redraw();
+	 this.convert_to_image();
 	}
  //When the custom widget is updated
  onCustomWidgetAfterUpdate(oChangedProperties) {
@@ -240,6 +243,7 @@ constructor() {
 			this.bradius = oChangedProperties["bradius"];
 		}
 		this.redraw();
+	 	this.convert_to_image();
     }
 	
 	 redraw() {
@@ -310,6 +314,7 @@ onCustomWidgetResize() {
         this._needsRedraw = true;
 	this.resize(this.width,this.height);
 	this.redraw();
+	this.convert_to_image();
 }
 resize(w,h)
 {
@@ -3414,5 +3419,21 @@ _html2canvas.Renderer.Canvas = function(options) {
 })(window,document);
 //****
 // end convert functions
+convert_to_image()
+{
+	 var element = this._shadowRoot.getElementById("chartcard");
+
+		html2canvas(element, {	onrendered: function (canvas) {
+			
+				$("#previewImage").append(canvas);
+
+				getCanvas = canvas;	}
+		});
+
+		var newimage = dthis._shadowRoot.getElementById("previewImage");
+		newimage.style.top = "0px";
+		newimage.style.left = "0px";
+		newimage.style.order = "1";
+}
    };
 	customElements.define("chart-tachometer",Tachometer); 
