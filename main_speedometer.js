@@ -3446,4 +3446,4 @@ convert_to_image()
 		newimage.style.order = "1";
 }
    };
-	customElements.define("chart-tachometer",Tachometer); 
+	customElements.define("chart-speedometer",Tachometer); 
