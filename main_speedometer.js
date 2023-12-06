@@ -1062,6 +1062,7 @@ _html2canvas.Util.Font = (function () {
             gradient.y0 = (m2[2] * bounds.height) / 100;
             gradient.x1 = (m2[3] * bounds.width) / 100;
             gradient.y1 = (m2[4] * bounds.height) / 100;
+	  }
           m2 = m1[4].match(/((?:from|to|color-stop)\((?:[0-9\.]+,\s)?(?:rgb|rgba)\(\d{1,3},\s\d{1,3},\s\d{1,3}(?:,\s[0-9\.]+)?\)\))+/g);
           if(m2){
             m2Len = m2.length;
@@ -1091,20 +1092,12 @@ _html2canvas.Util.Font = (function () {
             colorStops: []
           };
           m2 = m1[2].match(/(\d{1,3})%?\s(\d{1,3})%?/);
-          // m2[1] == 0%   -> left
-          // m2[1] == 50%  -> center
-          // m2[1] == 100% -> right
-
-          // m2[2] == 0%   -> top
-          // m2[2] == 50%  -> center
-          // m2[2] == 100% -> bottom
-          if(m2){
+           if(m2){
             gradient.x0 = (m2[1] * bounds.width) / 100;
             gradient.y0 = (m2[2] * bounds.height) / 100;
             gradient.x1 = bounds.width - gradient.x0;
             gradient.y1 = bounds.height - gradient.y0;
           }
-
           m2 = m1[3].match(/((?:rgb|rgba)\(\d{1,3},\s\d{1,3},\s\d{1,3}(?:,\s[0-9\.]+)?\)(?:\s\d{1,3}%)?)+/g);
           if(m2){
             m2Len = m2.length;
