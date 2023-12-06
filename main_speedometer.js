@@ -166,7 +166,7 @@ constructor() {
 	connectedCallback() {
    		this._firstConnection = true;
 		this.redraw();
-		this.start_event();
+		//this.start_event();
   	}
 
 	//When the widget is removed from the html DOM of the page
@@ -178,7 +178,7 @@ constructor() {
 		this._props = { ...this._props, ...oChangedProperties };
 	 this.redraw();
 	 //
-	 this.start_event();
+	// this.start_event();
 	}
  //When the custom widget is updated
  onCustomWidgetAfterUpdate(oChangedProperties) {
@@ -259,7 +259,7 @@ constructor() {
 			this.bradius = oChangedProperties["bradius"];
 		}
 		this.redraw();
-	 	this.start_event();
+	 	//this.start_event();
     }
 	
 	 redraw() {
