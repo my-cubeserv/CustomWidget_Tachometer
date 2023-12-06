@@ -5,7 +5,7 @@
   Released under MIT License
 */
 
-(function(window, this._shadowRoot, undefined){
+(function(window, document, undefined){
 
 "use strict";
 
@@ -822,7 +822,7 @@ _html2canvas.Util.Font = (function () {
       return;
     }
 
-    var canvas = this.this._shadowRoot.createElement('canvas'),
+    var canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d'),
     gradient, grad;
 
@@ -849,7 +849,7 @@ _html2canvas.Util.Font = (function () {
           break;
 
         case 'ellipse':
-          var canvasRadial = this._shadowRoot.createElement('canvas'),
+          var canvasRadial = document.createElement('canvas'),
             ctxRadial = canvasRadial.getContext('2d'),
             ri = Math.max(gradient.rx, gradient.ry),
             di = ri * 2;
@@ -1815,7 +1815,7 @@ _html2canvas.Parse = function (images, options) {
     }
 
     var isImage = content.substr( 0, 3 ) === 'url',
-    elps = this._shadowRoot.createElement( isImage ? 'img' : 'span' );
+    elps = document.createElement( isImage ? 'img' : 'span' );
 
     elps.className = pseudoHide + "-before " + pseudoHide + "-after";
 
@@ -2590,7 +2590,7 @@ _html2canvas.Renderer = function(parseQueue, options){
     return renderer;
   }
 
-  return getRenderer(options.renderer)(parseQueue, options, this._shadowRoot, createRenderQueue(parseQueue.stack), _html2canvas);
+  return getRenderer(options.renderer)(parseQueue, options, document, createRenderQueue(parseQueue.stack), _html2canvas);
 };
 
 _html2canvas.Util.Support = function (options, doc) {
@@ -2740,9 +2740,9 @@ window.html2canvas.Renderer = {
 _html2canvas.Renderer.Canvas = function(options) {
   options = options || {};
 
-  var doc = this._shadowRoot,
+  var doc = document,
   safeImages = [],
-  testCanvas = this._shadowRoot.createElement("canvas"),
+  testCanvas = document.createElement("canvas"),
   testctx = testCanvas.getContext("2d"),
   Util = _html2canvas.Util,
   canvas = options.canvas || doc.createElement('canvas');
@@ -2804,7 +2804,7 @@ _html2canvas.Renderer.Canvas = function(options) {
     }
   }
 
-  return function(parsedData, options, this._shadowRoot, queue, _html2canvas) {
+  return function(parsedData, options, document, queue, _html2canvas) {
     var ctx = canvas.getContext("2d"),
     newCanvas,
     bounds,
@@ -2851,7 +2851,7 @@ _html2canvas.Renderer.Canvas = function(options) {
       if (typeof options.elements[0] === "object" && options.elements[0].nodeName !== "BODY") {
         // crop image to the bounds of selected (single) element
         bounds = _html2canvas.Util.Bounds(options.elements[0]);
-        newCanvas = this._shadowRoot.createElement('canvas');
+        newCanvas = document.createElement('canvas');
         newCanvas.width = Math.ceil(bounds.width);
         newCanvas.height = Math.ceil(bounds.height);
         ctx = newCanvas.getContext("2d");
