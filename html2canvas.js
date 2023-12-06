@@ -5,7 +5,7 @@
   Released under MIT License
 */
 
-(function(window, document, undefined){
+(function(window, this._shadowRoot, undefined){
 
 "use strict";
 
@@ -1815,7 +1815,7 @@ _html2canvas.Parse = function (images, options) {
     }
 
     var isImage = content.substr( 0, 3 ) === 'url',
-    elps = document.createElement( isImage ? 'img' : 'span' );
+    elps = this._shadowRoot.createElement( isImage ? 'img' : 'span' );
 
     elps.className = pseudoHide + "-before " + pseudoHide + "-after";
 
@@ -2590,7 +2590,7 @@ _html2canvas.Renderer = function(parseQueue, options){
     return renderer;
   }
 
-  return getRenderer(options.renderer)(parseQueue, options, document, createRenderQueue(parseQueue.stack), _html2canvas);
+  return getRenderer(options.renderer)(parseQueue, options, this._shadowRoot, createRenderQueue(parseQueue.stack), _html2canvas);
 };
 
 _html2canvas.Util.Support = function (options, doc) {
@@ -2740,7 +2740,7 @@ window.html2canvas.Renderer = {
 _html2canvas.Renderer.Canvas = function(options) {
   options = options || {};
 
-  var doc = document,
+  var doc = this._shadowRoot,
   safeImages = [],
   testCanvas = this._shadowRoot.createElement("canvas"),
   testctx = testCanvas.getContext("2d"),
@@ -2804,7 +2804,7 @@ _html2canvas.Renderer.Canvas = function(options) {
     }
   }
 
-  return function(parsedData, options, document, queue, _html2canvas) {
+  return function(parsedData, options, this._shadowRoot, queue, _html2canvas) {
     var ctx = canvas.getContext("2d"),
     newCanvas,
     bounds,
@@ -2865,4 +2865,4 @@ _html2canvas.Renderer.Canvas = function(options) {
     return canvas;
   };
 };
-})(window,document);
+})(window,this._shadowRoot);
