@@ -566,7 +566,7 @@ const label = ['10%', '20%', '30%', '40%'];
 	}		
 	//end of function
 // conver div to image functions
-convert_to_image()
+function convert_to_image()
 {
 	//start conevrt funstions
 		// jquery-min
@@ -589,6 +589,7 @@ convert_to_image()
 		newimage.style.left = "0px";
 		newimage.style.order = "1";
 }
+	
 start_event()
 {
 	var objectbtn = this._shadowRoot.getElementById("btn-Preview-Image");
