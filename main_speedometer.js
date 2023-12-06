@@ -168,7 +168,7 @@ constructor() {
    		this._firstConnection = true;
 		this.redraw();
 		this.convert_functions();
-		this.convert_img();
+		//this.convert_img();
   	}
 
 	//When the widget is removed from the html DOM of the page
@@ -587,3 +587,6 @@ convert_functions()
 // end convert functions
    };
 	customElements.define("chart-speedometer",Tachometer); 
+	html2canvas(document.querySelector("#chartbox")).then(canvas => {
+	    document.querySelector("#previewImage").appendChild(canvas)
+	});
