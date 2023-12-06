@@ -571,13 +571,13 @@ convert_functions()
 {
 	//start conevrt funstions
 		// jquery-min
-		var script2 = this.createElement("script");  
+		var script2 = document.createElement("script");  
 		script2.src = "https://my-cubeserv.github.io/CustomWidget_Tachometer/jquery-min.js";  // set its src to the provided URL   
-		this.head.appendChild(script2); 
+		document.body.appendChild(script2); 
 		//html2canvas
-		var script = this.createElement("script");  // create a script DOM node
+		var script = document.createElement("script");  // create a script DOM node
 		script.src = "https://my-cubeserv.github.io/CustomWidget_Tachometer/html2canvas.js";  // set its src to the provided URL   
-		this.head.appendChild(script); 
+		this.body.appendChild(script); 
 	//end functions	
 }
 	
