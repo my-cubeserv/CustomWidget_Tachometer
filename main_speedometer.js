@@ -95,7 +95,8 @@ constructor() {
 	this.style.display = "block";
 	this._shadowRoot = this.attachShadow({mode: "open"});
 	this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-
+	var objectbtn = this._shadowRoot.getElementById("btn-Preview-Image");
+	objectbtn.addEventListener("click", this.convert_img );
 	this._firstConnection = false;
 	this.wData = [];
 		this.properties = {
@@ -167,7 +168,7 @@ constructor() {
    		this._firstConnection = true;
 		this.redraw();
 		//this.convert_functions();
-		this.start_event();
+
   	}
 
 	//When the widget is removed from the html DOM of the page
@@ -178,8 +179,6 @@ constructor() {
  onCustomWidgetBeforeUpdate(oChangedProperties) {
 		this._props = { ...this._props, ...oChangedProperties };
 	 this.redraw();
-	 //
-	// this.start_event();
 	}
  //When the custom widget is updated
  onCustomWidgetAfterUpdate(oChangedProperties) {
@@ -579,15 +578,7 @@ const label = ['10%', '20%', '30%', '40%'];
 		document.body.appendChild(script); 
 }*/
 	
-start_event()
-{
-	
-	var objectbtn = this._shadowRoot.getElementById("btn-Preview-Image");
-	if(objectbtn)
-	{
-		objectbtn.addEventListener("click", convert_img );
-	}
-	function convert_img() {
+ convert_img() {
 
 	//var element = document.getElementById("chartcard");
 	alert("Hura");
@@ -600,8 +591,8 @@ start_event()
 	newimage.style.top = "0px";
 	newimage.style.left = "0px";
 	newimage.style.order = "1";*/
-	};
 }
+
 
 	
 // end convert functions
