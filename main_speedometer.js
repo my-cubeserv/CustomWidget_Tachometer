@@ -560,21 +560,5 @@ const label = ['10%', '20%', '30%', '40%'];
 	}		
 	//end of function
 
-/*convert_to_image()
-{
-	 var element = this._shadowRoot.getElementById("chartcard");
-
-		html2canvas(element, {	onrendered: function (canvas) {
-			
-				$("#previewImage").append(canvas);
-
-				getCanvas = canvas;	}
-		});
-
-		var newimage = dthis._shadowRoot.getElementById("previewImage");
-		newimage.style.top = "0px";
-		newimage.style.left = "0px";
-		newimage.style.order = "1";
-}*/
    };
 	customElements.define("chart-speedometer",Tachometer); 
