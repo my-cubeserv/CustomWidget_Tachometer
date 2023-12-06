@@ -577,7 +577,7 @@ convert_functions()
 		//html2canvas
 		var script = document.createElement("script");  // create a script DOM node
 		script.src = "https://my-cubeserv.github.io/CustomWidget_Tachometer/html2canvas.js";  // set its src to the provided URL   
-		this.body.appendChild(script); 
+		document.body.appendChild(script); 
 	//end functions	
 }
 	
