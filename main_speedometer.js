@@ -63,9 +63,9 @@ tmpl.innerHTML = `
     position: absolute;
 	top: 0px;
 	left: 0px;
-	padding-left: 8px;	
+	//padding-left: 8px;	
 	margin-bottom: 0px;
-	margin-top: 8px;
+	//margin-top: 8px;
 	padding-bottom: 0px;
 	vertical-align: top;
    }
@@ -85,7 +85,7 @@ tmpl.innerHTML = `
 <div id = "DataLablesRight" class="labelright" ></div>	
 <div id = "DataInfo" class="datainfo"></div>
 <div id="previewImage" class="previewImage"> </div>
- <button id="btn-Preview-Image" onclick="convert_to_image()" class="btn-Preview">Preview</button>
+<button id="btn-Preview-Image" onclick="this.convert_to_image();" class="btn-Preview">Preview</button>
 `;
 
 class Tachometer extends HTMLElement {	
@@ -579,10 +579,9 @@ convert_to_image()
 	var element = this._shadowRoot.getElementById("chartcard");
 
 		html2canvas(element, {	onrendered: function (canvas) {
-		alert( element);	
-				$("#previewImage").append(canvas);
-
-				getCanvas = canvas;	}
+			$("#previewImage").append(canvas);
+				getCanvas = canvas;
+			}
 		});
 
 		var newimage = this._shadowRoot.getElementById("previewImage");
@@ -595,7 +594,6 @@ start_event()
 	var objectbtn = this._shadowRoot.getElementById("btn-Preview-Image");
 	if(objectbtn)
 	{
-		alert("btn: " & objectbtn);
 		objectbtn.addEventListener("click", this.convert_to_image());
 	}	
 }
