@@ -592,7 +592,7 @@ convert_to_image()
 }
 start_event()
 {
-	var objectbtn = document.getElementById("btn-Preview-Image");
+	var objectbtn = this._shadowRoot.getElementById("btn-Preview-Image");
 	objectbtn.addEventListener("click", this.convert_to_image());
 }
 	//
