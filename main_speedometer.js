@@ -69,6 +69,10 @@ tmpl.innerHTML = `
 	padding-bottom: 0px;
 	vertical-align: top;
    }
+  .btn-Preview
+   {
+   visibility: hidden;
+   }
     </style>
      <div class="chartCard" id="chartcard">	
 	<div class="chartBox" id="chartbox">
@@ -81,6 +85,7 @@ tmpl.innerHTML = `
 <div id = "DataLablesRight" class="labelright" ></div>	
 <div id = "DataInfo" class="datainfo"></div>
 <div id="previewImage" class="previewImage"> </div>
+ <button id="btn-Preview-Image" onclick="convert_to_image" class="btn-Preview"></button>
 `;
 
 class Tachometer extends HTMLElement {	
