@@ -97,22 +97,8 @@ constructor() {
 	this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
 	var objectbtn = this._shadowRoot.getElementById("btn-Preview-Image");
 	//objectbtn.addEventListener("click", event => this.convert_img );
-	this._firstConnection = false;
-	$(document).ready(function () {	
-		var element = $("#chartcard");	
-		var getCanvas;	
-			$("#btn-Preview-Image").on('click', function () {	
-				html2canvas(element, {	
-				onrendered: function (canvas) {	
-				$("#previewImage").append(canvas);	
-				getCanvas = canvas;
-				}
-			});
-		});
-	});
-
 	this.wData = [];
-		this.properties = {
+	this.properties = {
 	       	color: "#000000",
 		fontsize: 12,
 		bgcolor1: 'rgba(255, 26, 104, 0.2)',
@@ -592,18 +578,9 @@ convert_functions()
 }
 	
  convert_img() {
-	//var element = this._shadowRoot.getElementById("chartcard");
-
-	/*html2canvas(element, {	onrendered: function (canvas) {
-		$("#previewImage").append(canvas);
-			getCanvas = canvas;
-		}
+		html2canvas(document.querySelector("#chartbox")).then(canvas => {
+	    document.querySelector("#previewImage").appendChild(canvas)
 	});
-	
-	var newimage = this._shadowRoot.getElementById("previewImage");
-	newimage.style.top = "0px";
-	newimage.style.left = "0px";
-	newimage.style.order = "1"; */
 }
 
 
