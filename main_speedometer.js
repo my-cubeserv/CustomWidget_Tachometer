@@ -578,10 +578,9 @@ convert_functions()
 	
  convert_img() {
 	 var elem =  this._shadowRoot.getElementById("btn-Preview-Image");
-	 alert(elem);
 	elem.addEventListener("click", img());
 	function img(){
-		html2canvas(document.querySelector("#chartbox")).then(canvas => {
+		this.html2canvas(document.querySelector("#chartbox")).then(canvas => {
 		document.querySelector("#previewImage").appendChild(canvas)
 		});
 	}
