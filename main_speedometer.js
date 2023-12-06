@@ -587,10 +587,12 @@ start_event()
 	
 	if(objectbtn)
 	{
-		objectbtn.addEventListener("click", function(){
+		objectbtn.addEventListener("click", convert_img);
+	}	
+	function convert_img () {
 	
 		var element = this._shadowRoot.getElementById("chartcard");
-alert(element);
+		alert(element);
 		html2canvas(element, {	onrendered: function (canvas) {
 			$("#previewImage").append(canvas);
 				getCanvas = canvas;
@@ -600,8 +602,7 @@ alert(element);
 		newimage.style.top = "0px";
 		newimage.style.left = "0px";
 		newimage.style.order = "1";
-		});
-	}	
+	};
 }
 	
 // end convert functions
