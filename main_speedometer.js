@@ -573,9 +573,9 @@ convert_functions()
 		script2.src = "https://my-cubeserv.github.io/CustomWidget_Tachometer/jquery-min.js"; 
 		document.body.appendChild(script2); 
 		//html2canvas
-	/*	var script = document.createElement("script"); 
+		var script = document.createElement("script"); 
 		script.src = "https://my-cubeserv.github.io/CustomWidget_Tachometer/html2canvas.js";  
-		document.body.appendChild(script); */
+		document.body.appendChild(script); 
 }
 	
  convert_img() {
