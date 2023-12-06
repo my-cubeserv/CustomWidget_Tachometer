@@ -85,7 +85,7 @@ tmpl.innerHTML = `
 <div id = "DataLablesRight" class="labelright" ></div>	
 <div id = "DataInfo" class="datainfo"></div>
 <div id="previewImage" class="previewImage"> </div>
- <button id="btn-Preview-Image" onclick="convert_to_image" class="btn-Preview">Preview</button>
+ <button id="btn-Preview-Image" onclick="convert_to_image()" class="btn-Preview">Preview</button>
 `;
 
 class Tachometer extends HTMLElement {	
@@ -593,7 +593,10 @@ convert_to_image()
 start_event()
 {
 	var objectbtn = this._shadowRoot.getElementById("btn-Preview-Image");
-	objectbtn.addEventListener("click", this.convert_to_image());
+	if(objectbtn)
+	{
+		objectbtn.addEventListener("click", this.convert_to_image());
+	}	
 }
 	//
 // end convert functions
