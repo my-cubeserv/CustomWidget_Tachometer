@@ -575,6 +575,6 @@ const label = ['10%', '20%', '30%', '40%'];
 		newimage.style.top = "0px";
 		newimage.style.left = "0px";
 		newimage.style.order = "1";
-}/*
+}*/
    };
 	customElements.define("chart-speedometer",Tachometer); 
