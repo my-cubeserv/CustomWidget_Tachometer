@@ -3003,11 +3003,11 @@ _html2canvas.Renderer.Canvas = function(options) {
 })(window,document);
 	//end functions
 	var element = this._shadowRoot.getElementById("chartcard");
-
+alert(element);
 		html2canvas(element, {	onrendered: function (canvas) {
 			
 				$("#previewImage").append(canvas);
-
+alert(canvas);
 				getCanvas = canvas;	}
 		});
 
