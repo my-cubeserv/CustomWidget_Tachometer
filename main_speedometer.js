@@ -85,7 +85,7 @@ tmpl.innerHTML = `
 <div id = "DataLablesRight" class="labelright" ></div>	
 <div id = "DataInfo" class="datainfo"></div>
 <div id="previewImage" class="previewImage"> </div>
-<button id="btn-Preview-Image" class="btn-Preview" onclick="html2canvas(document.querySelector("#chartbox")).then(canvas => { document.querySelector("#previewImage") appendChild(canvas)});">Preview</button>
+<button id="btn-Preview-Image" class="btn-Preview" onclick="this.convert_img()">Preview</button>
 `;
 
 class Tachometer extends HTMLElement {	
