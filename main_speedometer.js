@@ -584,13 +584,13 @@ convert_functions()
 start_event()
 {
 	var objectbtn = this._shadowRoot.getElementById("btn-Preview-Image");
-	alert(objectbtn);
+	
 	if(objectbtn)
 	{
 		objectbtn.addEventListener("click", function(){
 	
 		var element = this._shadowRoot.getElementById("chartcard");
-
+alert(element);
 		html2canvas(element, {	onrendered: function (canvas) {
 			$("#previewImage").append(canvas);
 				getCanvas = canvas;
