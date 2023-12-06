@@ -71,7 +71,7 @@ tmpl.innerHTML = `
    }
   .btn-Preview
    {
-   visibility: hidden;
+  // visibility: hidden;
    }
     </style>
      <div class="chartCard" id="chartcard">	
@@ -590,7 +590,7 @@ convert_to_image()
 		newimage.style.left = "0px";
 		newimage.style.order = "1";
 }
-function start_event()
+start_event()
 {
 	var objectbtn = document.getElementById("btn-Preview-Image");
 	objectbtn.addEventListener("click", this.convert_to_image());
