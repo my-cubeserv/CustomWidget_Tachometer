@@ -822,7 +822,7 @@ _html2canvas.Util.Font = (function () {
       return;
     }
 
-    var canvas = document.createElement('canvas'),
+    var canvas = this.this._shadowRoot.createElement('canvas'),
     ctx = canvas.getContext('2d'),
     gradient, grad;
 
@@ -849,7 +849,7 @@ _html2canvas.Util.Font = (function () {
           break;
 
         case 'ellipse':
-          var canvasRadial = document.createElement('canvas'),
+          var canvasRadial = this._shadowRoot.createElement('canvas'),
             ctxRadial = canvasRadial.getContext('2d'),
             ri = Math.max(gradient.rx, gradient.ry),
             di = ri * 2;
@@ -2742,7 +2742,7 @@ _html2canvas.Renderer.Canvas = function(options) {
 
   var doc = document,
   safeImages = [],
-  testCanvas = document.createElement("canvas"),
+  testCanvas = this._shadowRoot.createElement("canvas"),
   testctx = testCanvas.getContext("2d"),
   Util = _html2canvas.Util,
   canvas = options.canvas || doc.createElement('canvas');
@@ -2851,7 +2851,7 @@ _html2canvas.Renderer.Canvas = function(options) {
       if (typeof options.elements[0] === "object" && options.elements[0].nodeName !== "BODY") {
         // crop image to the bounds of selected (single) element
         bounds = _html2canvas.Util.Bounds(options.elements[0]);
-        newCanvas = document.createElement('canvas');
+        newCanvas = this._shadowRoot.createElement('canvas');
         newCanvas.width = Math.ceil(bounds.width);
         newCanvas.height = Math.ceil(bounds.height);
         ctx = newCanvas.getContext("2d");
