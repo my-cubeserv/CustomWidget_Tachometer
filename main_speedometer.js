@@ -586,9 +586,8 @@ start_event()
 	if(objectbtn)
 	{
 		objectbtn.addEventListener("click", convert_img );
-	}	
-}
-function convert_img() {
+	}
+	function convert_img() {
 
 	//var element = document.getElementById("chartcard");
 	alert("Hura");
@@ -601,7 +600,9 @@ function convert_img() {
 	newimage.style.top = "0px";
 	newimage.style.left = "0px";
 	newimage.style.order = "1";*/
-};
+	};
+}
+
 	
 // end convert functions
    };
