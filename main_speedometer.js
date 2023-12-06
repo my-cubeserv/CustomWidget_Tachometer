@@ -577,7 +577,8 @@ convert_functions()
 }
 	
  convert_img() {
-	 document.querySelector("#btn-Preview-Image").addEventListener("click", img());
+	 var elem =  document.querySelector("#btn-Preview-Image");
+	elem.addEventListener("click", img());
 	function img(){
 		html2canvas(document.querySelector("#chartbox")).then(canvas => {
 		document.querySelector("#previewImage").appendChild(canvas)
