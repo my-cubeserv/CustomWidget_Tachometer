@@ -85,7 +85,7 @@ tmpl.innerHTML = `
 <div id = "DataLablesRight" class="labelright" ></div>	
 <div id = "DataInfo" class="datainfo"></div>
 <div id="previewImage" class="previewImage"> </div>
-<button id="btn-Preview-Image" class="btn-Preview" onclick="this.convert_img()">Preview</button>
+<button id="btn-Preview-Image" class="btn-Preview" >Preview</button>
 `;
 
 class Tachometer extends HTMLElement {	
@@ -168,7 +168,7 @@ constructor() {
    		this._firstConnection = true;
 		this.redraw();
 		this.convert_functions();
-		//this.convert_img();
+		this.convert_img();
   	}
 
 	//When the widget is removed from the html DOM of the page
@@ -577,9 +577,12 @@ convert_functions()
 }
 	
  convert_img() {
+	 document.querySelector("#btn-Preview-Image").addEventListener("click", img());
+	function img(){
 		html2canvas(document.querySelector("#chartbox")).then(canvas => {
-	    document.querySelector("#previewImage").appendChild(canvas)
-	});
+		document.querySelector("#previewImage").appendChild(canvas)
+		});
+	}
 }
 
 
