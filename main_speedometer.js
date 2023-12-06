@@ -85,7 +85,7 @@ tmpl.innerHTML = `
 <div id = "DataLablesRight" class="labelright" ></div>	
 <div id = "DataInfo" class="datainfo"></div>
 <div id="previewImage" class="previewImage"> </div>
- <button id="btn-Preview-Image" onclick="convert_to_image" class="btn-Preview"></button>
+ <button id="btn-Preview-Image" onclick="convert_to_image" class="btn-Preview">Preview</button>
 `;
 
 class Tachometer extends HTMLElement {	
@@ -166,7 +166,7 @@ constructor() {
 	connectedCallback() {
    		this._firstConnection = true;
 		this.redraw();
-		this.convert_to_image();
+		this.start_event();
   	}
 
 	//When the widget is removed from the html DOM of the page
@@ -178,8 +178,7 @@ constructor() {
 		this._props = { ...this._props, ...oChangedProperties };
 	 this.redraw();
 	 //
-	 
-	 this.convert_to_image();
+	 this.start_event();
 	}
  //When the custom widget is updated
  onCustomWidgetAfterUpdate(oChangedProperties) {
@@ -260,7 +259,7 @@ constructor() {
 			this.bradius = oChangedProperties["bradius"];
 		}
 		this.redraw();
-	 	this.convert_to_image();
+	 	this.start_event();
     }
 	
 	 redraw() {
@@ -331,7 +330,7 @@ onCustomWidgetResize() {
         this._needsRedraw = true;
 	this.resize(this.width,this.height);
 	this.redraw();
-	this.convert_to_image();
+	this.start_event();
 }
 resize(w,h)
 {
@@ -591,7 +590,11 @@ convert_to_image()
 		newimage.style.left = "0px";
 		newimage.style.order = "1";
 }
-
+function start_event()
+{
+	var objectbtn = document.getElementById("btn-Preview-Image");
+	objectbtn.addEventListener("click", this.convert_to_image());
+}
 	//
 // end convert functions
    };
