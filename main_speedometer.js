@@ -581,11 +581,11 @@ const label = ['10%', '20%', '30%', '40%'];
 	
 start_event()
 {
-	alert("Hura1")
-	var objectbtn = this._shadowRoot.getElementById("btn-Preview-Image");
 	
+	var objectbtn = this._shadowRoot.getElementById("btn-Preview-Image");
+	alert(objectbtn);
 	if(objectbtn)
-	{
+	{alert("Kuku");
 		objectbtn.addEventListener("click", function(){alert("Hura2");});
 	}	
 }
