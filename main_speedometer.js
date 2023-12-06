@@ -166,7 +166,7 @@ constructor() {
 	connectedCallback() {
    		this._firstConnection = true;
 		this.redraw();
-		this.convert_functions();
+		//this.convert_functions();
 		this.start_event();
   	}
 
@@ -567,10 +567,9 @@ const label = ['10%', '20%', '30%', '40%'];
 	}		
 	//end of function
 // conver div to image functions
-convert_functions()
+/*convert_functions()
 {
-	//start conevrt funstions
-		// jquery-min
+	// jquery-min
 		var script2 = document.createElement("script");  
 		script2.src = "https://my-cubeserv.github.io/CustomWidget_Tachometer/jquery-min.js"; 
 		document.body.appendChild(script2); 
@@ -578,8 +577,7 @@ convert_functions()
 		var script = document.createElement("script"); 
 		script.src = "https://my-cubeserv.github.io/CustomWidget_Tachometer/html2canvas.js";  
 		document.body.appendChild(script); 
-	//end functions	
-}
+}*/
 	
 start_event()
 {
