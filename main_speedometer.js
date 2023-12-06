@@ -583,17 +583,16 @@ start_event()
 {
 	
 	var objectbtn = this._shadowRoot.getElementById("btn-Preview-Image");
-	alert(objectbtn);
 	if(objectbtn)
-	{alert("Kuku");
-		objectbtn.addEventListener("click", function(){alert("Hura2");});
+	{
+		objectbtn.addEventListener("click", convert_img );
 	}	
 }
-/*function convert_img () {
+function convert_img() {
 
 	//var element = document.getElementById("chartcard");
 	alert("Hura");
-	html2canvas(element, {	onrendered: function (canvas) {
+	/*html2canvas(element, {	onrendered: function (canvas) {
 		$("#previewImage").append(canvas);
 			getCanvas = canvas;
 		}
@@ -601,8 +600,8 @@ start_event()
 	var newimage = this._shadowRoot.getElementById("previewImage");
 	newimage.style.top = "0px";
 	newimage.style.left = "0px";
-	newimage.style.order = "1";
-};*/
+	newimage.style.order = "1";*/
+};
 	
 // end convert functions
    };
