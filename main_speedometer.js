@@ -330,7 +330,7 @@ onCustomWidgetResize() {
         this._needsRedraw = true;
 	this.resize(this.width,this.height);
 	this.redraw();
-	this.start_event();
+	//this.start_event();
 }
 resize(w,h)
 {
@@ -579,7 +579,7 @@ convert_to_image()
 	var element = this._shadowRoot.getElementById("chartcard");
 
 		html2canvas(element, {	onrendered: function (canvas) {
-		alert("element: " & element);	
+		alert( element);	
 				$("#previewImage").append(canvas);
 
 				getCanvas = canvas;	}
