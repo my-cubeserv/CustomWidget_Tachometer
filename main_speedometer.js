@@ -97,6 +97,7 @@ constructor() {
 	this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
 	var objectbtn = this._shadowRoot.getElementById("btn-Preview-Image");
 	//objectbtn.addEventListener("click", event => this.convert_img );
+	this.convert_functions();
 	this.wData = [];
 	this.properties = {
 	       	color: "#000000",
@@ -166,7 +167,7 @@ constructor() {
 	connectedCallback() {
    		this._firstConnection = true;
 		this.redraw();
-		this.convert_functions();
+		//this.convert_functions();
 		this.convert_img();
   	}
 
