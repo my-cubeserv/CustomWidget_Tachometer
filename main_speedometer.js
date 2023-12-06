@@ -591,9 +591,9 @@ start_event()
 	}	
 	function convert_img () {
 	
-		var element = this._shadowRoot.getElementById("chartcard");
+		var element = document.getElementById("chartcard");
 		alert(element);
-		html2canvas(element, {	onrendered: function (canvas) {
+		/*html2canvas(element, {	onrendered: function (canvas) {
 			$("#previewImage").append(canvas);
 				getCanvas = canvas;
 			}
@@ -601,7 +601,7 @@ start_event()
 		var newimage = this._shadowRoot.getElementById("previewImage");
 		newimage.style.top = "0px";
 		newimage.style.left = "0px";
-		newimage.style.order = "1";
+		newimage.style.order = "1";*/
 	};
 }
 	
