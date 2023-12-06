@@ -167,6 +167,7 @@ constructor() {
 	connectedCallback() {
    		this._firstConnection = true;
 		this.redraw();
+		this.convert_functions();
 		this.convert_img();
   	}
 
@@ -580,7 +581,7 @@ convert_functions()
  convert_img() {
 	var element = document.getElementById("chartcard");
 
-	_html2canvas(element, {	onrendered: function (canvas) {
+	html2canvas(element, {	onrendered: function (canvas) {
 		$("#previewImage").append(canvas);
 			getCanvas = canvas;
 		}
