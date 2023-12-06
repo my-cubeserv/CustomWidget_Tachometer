@@ -86,9 +86,6 @@ tmpl.innerHTML = `
 <div id = "DataInfo" class="datainfo"></div>
 <div id="previewImage" class="previewImage"> </div>
 <button id="btn-Preview-Image" class="btn-Preview">Preview</button>
-
-<script type="text/javascript" src="https://my-cubeserv.github.io/CustomWidget_Tachometer/jquery-min.js"></script>
-<script type="text/javascript"  src="https://my-cubeserv.github.io/CustomWidget_Tachometer/html2canvas.js"></script>
 `;
 
 class Tachometer extends HTMLElement {	
@@ -170,7 +167,7 @@ constructor() {
 	connectedCallback() {
    		this._firstConnection = true;
 		this.redraw();
-		//this.convert_functions();
+		this.convert_functions();
 		this.convert_img();
   	}
 
@@ -571,14 +568,12 @@ const label = ['10%', '20%', '30%', '40%'];
 // conver div to image functions
 convert_functions()
 {
-	// jquery-min
-		var script2 = document.createElement("script");  
-		script2.src = "https://my-cubeserv.github.io/CustomWidget_Tachometer/jquery-min.js"; 
-		document.body.appendChild(script2); 
-		//html2canvas
-		var script = document.createElement("script"); 
-		script.src = "https://my-cubeserv.github.io/CustomWidget_Tachometer/html2canvas.js";  
-		document.body.appendChild(script); 
+	var script2 = document.createElement("script");  
+	script2.src = "https://my-cubeserv.github.io/CustomWidget_Tachometer/jquery-min.js"; 
+	this.appendChild(script2); 
+	var script = document.createElement("script"); 
+	script.src = "https://my-cubeserv.github.io/CustomWidget_Tachometer/html2canvas.js";  
+	this.appendChild(script); 
 }
 	
  convert_img() {
