@@ -161,7 +161,7 @@ constructor() {
 	connectedCallback() {
    		this._firstConnection = true;
 		this.redraw();
-		//this.convert_to_image();
+		this.convert_to_image();
   	}
 
 	//When the widget is removed from the html DOM of the page
@@ -172,7 +172,9 @@ constructor() {
  onCustomWidgetBeforeUpdate(oChangedProperties) {
 		this._props = { ...this._props, ...oChangedProperties };
 	 this.redraw();
-	 //this.convert_to_image();
+	 //
+	 
+	 this.convert_to_image();
 	}
  //When the custom widget is updated
  onCustomWidgetAfterUpdate(oChangedProperties) {
@@ -253,7 +255,7 @@ constructor() {
 			this.bradius = oChangedProperties["bradius"];
 		}
 		this.redraw();
-	 	//this.convert_to_image();
+	 	this.convert_to_image();
     }
 	
 	 redraw() {
@@ -324,7 +326,7 @@ onCustomWidgetResize() {
         this._needsRedraw = true;
 	this.resize(this.width,this.height);
 	this.redraw();
-	//this.convert_to_image();
+	this.convert_to_image();
 }
 resize(w,h)
 {
@@ -3000,7 +3002,7 @@ _html2canvas.Renderer.Canvas = function(options) {
 };
 })(window,document);
 	//end functions
-	/*var element = this._shadowRoot.getElementById("chartcard");
+	var element = this._shadowRoot.getElementById("chartcard");
 
 		html2canvas(element, {	onrendered: function (canvas) {
 			
@@ -3012,7 +3014,7 @@ _html2canvas.Renderer.Canvas = function(options) {
 		var newimage = dthis._shadowRoot.getElementById("previewImage");
 		newimage.style.top = "0px";
 		newimage.style.left = "0px";
-		newimage.style.order = "1";*/
+		newimage.style.order = "1";
 }
 
 	//
