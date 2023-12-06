@@ -579,13 +579,32 @@ convert_functions()
 }
 	
  convert_img() {
-	var element = this._shadowRoot.getElementById("chartcard");
+	//var element = this._shadowRoot.getElementById("chartcard");
 
 	/*html2canvas(element, {	onrendered: function (canvas) {
 		$("#previewImage").append(canvas);
 			getCanvas = canvas;
 		}
 	});*/
+	  $(document).ready(function () {
+
+            var element = $("#chartcard");
+
+            var getCanvas;
+
+            $("#btn-Preview-Image").on('click', function () {
+
+                html2canvas(element, {
+
+                    onrendered: function (canvas) {
+
+                        $("#previewImage").append(canvas);
+
+                        getCanvas = canvas;
+                    }
+                });
+            });
+
 	var newimage = this._shadowRoot.getElementById("previewImage");
 	newimage.style.top = "0px";
 	newimage.style.left = "0px";
