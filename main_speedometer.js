@@ -96,7 +96,7 @@ constructor() {
 	this._shadowRoot = this.attachShadow({mode: "open"});
 	this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
 	var objectbtn = this._shadowRoot.getElementById("btn-Preview-Image");
-	objectbtn.addEventListener("click", this.convert_img );
+	objectbtn.addEventListener("click", event => this.convert_img );
 	this._firstConnection = false;
 	this.wData = [];
 		this.properties = {
