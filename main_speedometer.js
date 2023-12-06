@@ -591,8 +591,8 @@ start_event()
 	}	
 	function convert_img () {
 	
-		var element = document.getElementById("chartcard");
-		alert(element);
+		//var element = document.getElementById("chartcard");
+		alert("Hura");
 		/*html2canvas(element, {	onrendered: function (canvas) {
 			$("#previewImage").append(canvas);
 				getCanvas = canvas;
