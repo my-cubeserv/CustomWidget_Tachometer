@@ -2865,4 +2865,4 @@ _html2canvas.Renderer.Canvas = function(options) {
     return canvas;
   };
 };
-})(window,this._shadowRoot);
+})(window, document);
