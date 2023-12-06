@@ -590,11 +590,11 @@ start_event()
 		objectbtn.addEventListener("click", function(){alert("Hura");});
 	}	
 }
-function convert_img () {
+/*function convert_img () {
 
 	//var element = document.getElementById("chartcard");
 	alert("Hura");
-	/*html2canvas(element, {	onrendered: function (canvas) {
+	html2canvas(element, {	onrendered: function (canvas) {
 		$("#previewImage").append(canvas);
 			getCanvas = canvas;
 		}
@@ -602,8 +602,8 @@ function convert_img () {
 	var newimage = this._shadowRoot.getElementById("previewImage");
 	newimage.style.top = "0px";
 	newimage.style.left = "0px";
-	newimage.style.order = "1";*/
-};
+	newimage.style.order = "1";
+};*/
 	
 // end convert functions
    };
