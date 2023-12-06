@@ -580,7 +580,7 @@ convert_functions()
  convert_img() {
 	var element = document.getElementById("chartcard");
 
-	html2canvas(element, {	onrendered: function (canvas) {
+	_html2canvas(element, {	onrendered: function (canvas) {
 		$("#previewImage").append(canvas);
 			getCanvas = canvas;
 		}
