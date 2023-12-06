@@ -577,7 +577,7 @@ convert_functions()
 }
 	
  convert_img() {
-	 var elem =  document.querySelector("#btn-Preview-Image");
+	 var elem =  this._shadowRoot.getElementById("btn-Preview-Image");
 	 alert(elem);
 	elem.addEventListener("click", img());
 	function img(){
