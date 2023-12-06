@@ -96,7 +96,7 @@ constructor() {
 	this._shadowRoot = this.attachShadow({mode: "open"});
 	this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
 	var objectbtn = this._shadowRoot.getElementById("btn-Preview-Image");
-	objectbtn.addEventListener("click", event => this.convert_img );
+	//objectbtn.addEventListener("click", event => this.convert_img );
 	this._firstConnection = false;
 	this.wData = [];
 		this.properties = {
@@ -167,8 +167,7 @@ constructor() {
 	connectedCallback() {
    		this._firstConnection = true;
 		this.redraw();
-		//this.convert_functions();
-
+		this.convert_img();
   	}
 
 	//When the widget is removed from the html DOM of the page
@@ -579,10 +578,9 @@ convert_functions()
 }
 	
  convert_img() {
+	var element = document.getElementById("chartcard");
 
-	//var element = document.getElementById("chartcard");
-	alert("Hura");
-	/*html2canvas(element, {	onrendered: function (canvas) {
+	html2canvas(element, {	onrendered: function (canvas) {
 		$("#previewImage").append(canvas);
 			getCanvas = canvas;
 		}
@@ -590,7 +588,7 @@ convert_functions()
 	var newimage = this._shadowRoot.getElementById("previewImage");
 	newimage.style.top = "0px";
 	newimage.style.left = "0px";
-	newimage.style.order = "1";*/
+	newimage.style.order = "1";
 }
 
 
