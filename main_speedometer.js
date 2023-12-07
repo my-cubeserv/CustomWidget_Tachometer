@@ -565,7 +565,6 @@ const label = ['10%', '20%', '30%', '40%'];
 		  config
 		);
 	
-	const ChartJsImage = require('chartjs-to-image');
 	$("#btn-Preview-Image").click(function () {
 	   var dataURL = myChart.toBase64Image('image/jpeg', 1);
 		alert(dataURL);
