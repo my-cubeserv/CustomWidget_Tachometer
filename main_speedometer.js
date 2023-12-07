@@ -91,8 +91,10 @@ constructor() {
 	this.style.display = "block";
 	this._shadowRoot = this.attachShadow({mode: "open"});
 	this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
+
+	this._firstConnection = false;
 	this.wData = [];
-	this.properties = {
+		this.properties = {
 	       	color: "#000000",
 		fontsize: 12,
 		bgcolor1: 'rgba(255, 26, 104, 0.2)',
@@ -250,7 +252,6 @@ constructor() {
 			this.bradius = oChangedProperties["bradius"];
 		}
 		this.redraw();
-
     }
 	
 	 redraw() {
@@ -321,7 +322,6 @@ onCustomWidgetResize() {
         this._needsRedraw = true;
 	this.resize(this.width,this.height);
 	this.redraw();
-
 }
 resize(w,h)
 {
@@ -540,16 +540,16 @@ const label = ['10%', '20%', '30%', '40%'];
 		  type: 'doughnut',
 		  data,
 		  options: {
-		   animation: {
+		  aspectRatio: 1.75,
+		  animation: {
 		  onComplete: function () {
-			  var imgch = this._shadowRoot.getElementById("hartimg")
-			imgch.src = myChart.toBase64Image();
+			  var chartb = this._shadowRoot.getElementById("chartimg");
+			chartb.src = myChart.toBase64Image();
 			this._shadowRoot.getElementById("Tachometer").style.visibility = "hidden";
-			imgch.style.width = "300px";
-			imgch.style.height = "150px";
+			chartb.style.width = "300px";
+			chartb.style.height = "150px";
 		  },
 		},
-		  aspectRatio: 1.75,
 			plugins:
 			{ legend: { display: false },		
 			tooltip: {enabled: false}
@@ -560,16 +560,9 @@ const label = ['10%', '20%', '30%', '40%'];
 		// render init block
 		const myChart = new Chart(
 		  this._shadowRoot.getElementById('Tachometer'),
-		  config
-		);
-	
-});
-	
+		  config ); 
 	}		
-
-}
-
-
+	
    };
 	customElements.define("chart-speedometer",Tachometer); 
 	
