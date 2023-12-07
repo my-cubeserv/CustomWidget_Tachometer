@@ -543,7 +543,7 @@ const label = ['10%', '20%', '30%', '40%'];
 		  aspectRatio: 1.75,
 		  animation: {
 		  onComplete: function () {
-			  var chartb = this._shadowRoot.getElementById("chartimg");
+			var chartb = document.querySelector("#chartimg");
 			chartb.src = myChart.toBase64Image();
 			this._shadowRoot.getElementById("Tachometer").style.visibility = "hidden";
 			chartb.style.width = "300px";
