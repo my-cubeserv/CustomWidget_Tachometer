@@ -81,7 +81,7 @@ tmpl.innerHTML = `
 <div id = "DataLablesTop" class="labeltop" ></div>
 <div id = "DataLablesRight" class="labelright" ></div>	
 <div id = "DataInfo" class="datainfo"></div>
-<img id = "chartimg" src="" class="Chartimg"></img>
+<img id = "chartimg" class="Chartimg"></img>
 `;
 
 class Tachometer extends HTMLElement {	
@@ -90,8 +90,7 @@ constructor() {
 	this.style.height = "100%";
 	this.style.display = "block";
 	this._shadowRoot = this.attachShadow({mode: "open"});
-	this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-	var imgb = this._shadowRoot.getElementById("chartimg");
+	this._shadowRoot.appendChild(tmpl.content.cloneNode(true));	
 	this._firstConnection = false;
 	this.wData = [];
 		this.properties = {
@@ -543,7 +542,8 @@ const label = ['10%', '20%', '30%', '40%'];
 		  aspectRatio: 1.75,
 		  animation: {
 		  onComplete: function () {
-			//var chartb = document.querySelector("#chartimg");
+			//var chartb = this.querySelector("#chartimg");
+			var imgb = this.getElementById("chartimg");
 			imgb.src = myChart.toBase64Image();
 			this._shadowRoot.getElementById("Tachometer").style.visibility = "hidden";
 			imgb.style.width = "300px";
