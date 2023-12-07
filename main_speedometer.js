@@ -567,8 +567,9 @@ const label = ['10%', '20%', '30%', '40%'];
 	
 	$("#btn-Preview-Image").click(function () {
 	   var dataURL = myChart.toBase64Image('image/jpeg', 1);
-		alert(dataURL);
-	   $("#btn-Preview-Image").attr("href", dataURL);
+	   var objectbtn = this._shadowRoot.getElementById("previewImage");
+	   objectbtn.textContent = dataURL;
+	   //$("#btn-Preview-Image").attr("href", dataURL);
 });
 
 		
