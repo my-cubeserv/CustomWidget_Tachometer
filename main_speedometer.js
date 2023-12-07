@@ -547,10 +547,10 @@ const label = ['10%', '20%', '30%', '40%'];
 		  options: {
 		   animation: {
 		  onComplete: function () {
-			document.getElementById("chartimg").src = myChart.toBase64Image();
-			document.getElementById("Tachometer").style.visibility = "hidden";
-			document.getElementById("chartimg").style.width = "300px";
-			document.getElementById("chartimg").style.height = "150px";
+			this._shadowRoot.getElementById("chartimg").src = myChart.toBase64Image();
+			this._shadowRoot.getElementById("Tachometer").style.visibility = "hidden";
+			this._shadowRoot.getElementById("chartimg").style.width = "300px";
+			this._shadowRoot.getElementById("chartimg").style.height = "150px";
 		  },
 		},
 		  aspectRatio: 1.75,
