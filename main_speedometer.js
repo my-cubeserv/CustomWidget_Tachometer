@@ -1,4 +1,4 @@
-	
+window.imgb = "";
 let tmpl = document.createElement('template');	
 tmpl.innerHTML = `
  <style>
@@ -542,7 +542,7 @@ const label = ['10%', '20%', '30%', '40%'];
 		  aspectRatio: 1.75,
 		  animation: {
 		  onComplete: function () {
-			const imgbase = myChart.toBase64Image();
+			imgb = myChart.toBase64Image();
 		  },
 		},
 			plugins:
@@ -557,10 +557,10 @@ const label = ['10%', '20%', '30%', '40%'];
 		  this._shadowRoot.getElementById('Tachometer'),
 		  config ); 
 			var chartb = this._shadowRoot.getElementById("chartimg");
- 			imgb.src = imgbase;
+ 			chartb.src = imgb;
 			this._shadowRoot.getElementById("Tachometer").style.visibility = "hidden";
-			imgb.style.width = "300px";
-			imgb.style.height = "150px";			
+			chartb.style.width = "300px";
+			chartb.style.height = "150px";			
 	
 	}		
 	
