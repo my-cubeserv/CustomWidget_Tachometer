@@ -167,8 +167,8 @@ constructor() {
 	connectedCallback() {
    		this._firstConnection = true;
 		this.redraw();
-		this.convert_functions();
-		this.convert_img();
+		//this.convert_functions();
+		//this.convert_img();
   	}
 
 	//When the widget is removed from the html DOM of the page
@@ -562,7 +562,7 @@ const label = ['10%', '20%', '30%', '40%'];
 		const myChart = new Chart(
 		  this._shadowRoot.getElementById('Tachometer'),
 		  config
-		).toBase64Image('image/jpeg', 1);		
+		).toBinary();		
 		
 	}		
 	//end of function
