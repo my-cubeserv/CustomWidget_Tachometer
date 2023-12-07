@@ -96,7 +96,7 @@ constructor() {
 	this.style.display = "block";
 	this._shadowRoot = this.attachShadow({mode: "open"});
 	this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-	var objectbtn = this._shadowRoot.getElementById("btn-Preview-Image");
+	//var objectbtn = this._shadowRoot.getElementById("btn-Preview-Image");
 	//objectbtn.addEventListener("click", event => this.convert_img );
 	//this.convert_functions();
 	this.wData = [];
@@ -568,6 +568,7 @@ const label = ['10%', '20%', '30%', '40%'];
 	const ChartJsImage = require('chartjs-to-image');
 	$("#btn-Preview-Image").click(function () {
 	   var dataURL = myChart.toBase64Image('image/jpeg', 1);
+		alert(dataURL);
 	   $("#btn-Preview-Image").attr("href", dataURL);
 });
 
@@ -577,22 +578,22 @@ const label = ['10%', '20%', '30%', '40%'];
 // conver div to image functions
 convert_functions()
 {
-	var script2 = document.createElement("script");  
+	/*var script2 = document.createElement("script");  
 	script2.src = "https://my-cubeserv.github.io/CustomWidget_Tachometer/jquery-min.js"; 
 	this.appendChild(script2); 
 	var script = document.createElement("script"); 
 	script.src = "https://my-cubeserv.github.io/CustomWidget_Tachometer/html2canvas.js";  
-	this.appendChild(script); 
+	this.appendChild(script); */
 }
 	
  convert_img() {
-	 var elem =  this._shadowRoot.getElementById("btn-Preview-Image");
+	/* var elem =  this._shadowRoot.getElementById("btn-Preview-Image");
 	elem.addEventListener("click", img());
 	function img(){
 		this.html2canvas(document.querySelector("#chartbox")).then(canvas => {
 		document.querySelector("#previewImage").appendChild(canvas)
 		});
-	}
+	}*/
 }
 
 
