@@ -91,7 +91,7 @@ constructor() {
 	this.style.display = "block";
 	this._shadowRoot = this.attachShadow({mode: "open"});
 	this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-
+	var imgb = this._shadowRoot.getElementById("chartimg");
 	this._firstConnection = false;
 	this.wData = [];
 		this.properties = {
@@ -543,11 +543,11 @@ const label = ['10%', '20%', '30%', '40%'];
 		  aspectRatio: 1.75,
 		  animation: {
 		  onComplete: function () {
-			var chartb = document.querySelector("#chartimg");
-			chartb.src = myChart.toBase64Image();
+			//var chartb = document.querySelector("#chartimg");
+			imgb.src = myChart.toBase64Image();
 			this._shadowRoot.getElementById("Tachometer").style.visibility = "hidden";
-			chartb.style.width = "300px";
-			chartb.style.height = "150px";
+			imgb.style.width = "300px";
+			imgb.style.height = "150px";
 		  },
 		},
 			plugins:
