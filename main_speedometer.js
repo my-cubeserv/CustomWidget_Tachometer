@@ -81,7 +81,7 @@ tmpl.innerHTML = `
 <div id = "DataLablesTop" class="labeltop" ></div>
 <div id = "DataLablesRight" class="labelright" ></div>	
 <div id = "DataInfo" class="datainfo"></div>
-<img id="chartimg" src="" class="Chartimg"/>
+<img id = "chartimg" src="" class="Chartimg"></img>
 `;
 
 class Tachometer extends HTMLElement {	
@@ -91,9 +91,6 @@ constructor() {
 	this.style.display = "block";
 	this._shadowRoot = this.attachShadow({mode: "open"});
 	this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-	//var objectbtn = this._shadowRoot.getElementById("btn-Preview-Image");
-	//objectbtn.addEventListener("click", event => this.convert_img );
-	//this.convert_functions();
 	this.wData = [];
 	this.properties = {
 	       	color: "#000000",
@@ -163,8 +160,6 @@ constructor() {
 	connectedCallback() {
    		this._firstConnection = true;
 		this.redraw();
-		//this.convert_functions();
-		//this.convert_img();
   	}
 
 	//When the widget is removed from the html DOM of the page
@@ -547,10 +542,11 @@ const label = ['10%', '20%', '30%', '40%'];
 		  options: {
 		   animation: {
 		  onComplete: function () {
-			this._shadowRoot.getElementById("chartimg").src = myChart.toBase64Image();
+			  var imgch = this._shadowRoot.getElementById("hartimg")
+			imgch.src = myChart.toBase64Image();
 			this._shadowRoot.getElementById("Tachometer").style.visibility = "hidden";
-			this._shadowRoot.getElementById("chartimg").style.width = "300px";
-			this._shadowRoot.getElementById("chartimg").style.height = "150px";
+			imgch.style.width = "300px";
+			imgch.style.height = "150px";
 		  },
 		},
 		  aspectRatio: 1.75,
@@ -567,42 +563,13 @@ const label = ['10%', '20%', '30%', '40%'];
 		  config
 		);
 	
-	$("#btn-Preview-Image").click(function () {
-	  // var dataURL = myChart.toBase64Image('image/jpeg', 1);
-	var canvas = $(".canvasjs-chart-canvas").get(0);
-    	var dataURL = canvas.toDataURL('image/jpeg');
-	   var objectbtn = this._shadowRoot.getElementById("DataInfo");
-	   objectbtn.textContent = dataURL;
-	   $("#btn-Preview-Image").attr("href", dataURL);
 });
-
-		
+	
 	}		
-	//end of function
-// conver div to image functions
-convert_functions()
-{
-	/*var script2 = document.createElement("script");  
-	script2.src = "https://my-cubeserv.github.io/CustomWidget_Tachometer/jquery-min.js"; 
-	this.appendChild(script2); 
-	var script = document.createElement("script"); 
-	script.src = "https://my-cubeserv.github.io/CustomWidget_Tachometer/html2canvas.js";  
-	this.appendChild(script); */
-}
-	
- convert_img() {
-	/* var elem =  this._shadowRoot.getElementById("btn-Preview-Image");
-	elem.addEventListener("click", img());
-	function img(){
-		this.html2canvas(document.querySelector("#chartbox")).then(canvas => {
-		document.querySelector("#previewImage").appendChild(canvas)
-		});
-	}*/
+
 }
 
 
-	
-// end convert functions
    };
 	customElements.define("chart-speedometer",Tachometer); 
 	
