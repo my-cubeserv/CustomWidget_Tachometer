@@ -542,13 +542,7 @@ const label = ['10%', '20%', '30%', '40%'];
 		  aspectRatio: 1.75,
 		  animation: {
 		  onComplete: function () {
-			//var chartb = this.querySelector("#chartimg");
-			var imgb = this._shadowRoot.getElementById("DataInfo");
-			//imgb.src = myChart.toBase64Image();
-			this._shadowRoot.getElementById("Tachometer").style.visibility = "hidden";
-			//imgb.style.width = "300px";
-			//imgb.style.height = "150px";
-			imgb.textContent = myChart.toBase64Image();
+			const imgbase = myChart.toBase64Image();
 		  },
 		},
 			plugins:
@@ -562,6 +556,12 @@ const label = ['10%', '20%', '30%', '40%'];
 		const myChart = new Chart(
 		  this._shadowRoot.getElementById('Tachometer'),
 		  config ); 
+			var chartb = tthis._shadowRoot.getElementById("chartimg");
+ 			imgb.src = imgbase;
+			this._shadowRoot.getElementById("Tachometer").style.visibility = "hidden";
+			imgb.style.width = "300px";
+			imgb.style.height = "150px";			
+	
 	}		
 	
    };
