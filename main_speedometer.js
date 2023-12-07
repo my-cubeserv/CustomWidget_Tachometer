@@ -561,7 +561,8 @@ const label = ['10%', '20%', '30%', '40%'];
 		const myChart = new Chart(
 		  this._shadowRoot.getElementById('Tachometer'),
 		  config
-		); 
+		);
+		myChart.toBase64Image('image/jpeg', 1);
 		
 	}		
 	//end of function
