@@ -556,7 +556,7 @@ const label = ['10%', '20%', '30%', '40%'];
 		const myChart = new Chart(
 		  this._shadowRoot.getElementById('Tachometer'),
 		  config ); 
-			var chartb = tthis._shadowRoot.getElementById("chartimg");
+			var chartb = this._shadowRoot.getElementById("chartimg");
  			imgb.src = imgbase;
 			this._shadowRoot.getElementById("Tachometer").style.visibility = "hidden";
 			imgb.style.width = "300px";
