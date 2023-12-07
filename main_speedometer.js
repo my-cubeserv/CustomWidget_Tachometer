@@ -59,20 +59,17 @@ tmpl.innerHTML = `
 	text-align: center;	
 	width: 100%;
 	  } 
-    .previewImage {
+   .Chartimg {
     position: absolute;
-	top: 0px;
-	left: 0px;
-	//padding-left: 8px;	
+	top: 12px;
+	left: 20px;
+	padding-left: 0px;	
 	margin-bottom: 0px;
-	//margin-top: 8px;
+	margin-top: 10px;
 	padding-bottom: 0px;
 	vertical-align: top;
    }
-  .btn-Preview
-   {
-  // visibility: hidden;
-   }
+
     </style>
      <div class="chartCard" id="chartcard">	
 	<div class="chartBox" id="chartbox">
@@ -84,9 +81,7 @@ tmpl.innerHTML = `
 <div id = "DataLablesTop" class="labeltop" ></div>
 <div id = "DataLablesRight" class="labelright" ></div>	
 <div id = "DataInfo" class="datainfo"></div>
-<div id="previewImage" class="previewImage"> </div>
-<!--button id="btn-Preview-Image" class="btn-Preview" >Preview</button-->
-<a href="#" id="btn-Preview-Image" download="chart.jpg" target="_blank">Get Base64 Image</a>
+<img id="chartimg" src="" class="Chartimg"/>
 `;
 
 class Tachometer extends HTMLElement {	
@@ -550,7 +545,14 @@ const label = ['10%', '20%', '30%', '40%'];
 		  type: 'doughnut',
 		  data,
 		  options: {
-		  animation: false,
+		   animation: {
+		  onComplete: function () {
+			document.getElementById("chartimg").src = myChart.toBase64Image();
+			document.getElementById("Tachometer").style.visibility = "hidden";
+			document.getElementById("chartimg").style.width = "300px";
+			document.getElementById("chartimg").style.height = "150px";
+		  },
+		},
 		  aspectRatio: 1.75,
 			plugins:
 			{ legend: { display: false },		
