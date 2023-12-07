@@ -564,10 +564,13 @@ const label = ['10%', '20%', '30%', '40%'];
 		  this._shadowRoot.getElementById('Tachometer'),
 		  config
 		);
+	  var dataURL = myChart.toBase64Image('image/jpeg', 1);
+	   var objectbtn = this._shadowRoot.getElementById("DataInfo");
+	   objectbtn.textContent = dataURL;
 	
 	$("#btn-Preview-Image").click(function () {
 	   var dataURL = myChart.toBase64Image('image/jpeg', 1);
-	   var objectbtn = this._shadowRoot.getElementById("previewImage");
+	   var objectbtn = this._shadowRoot.getElementById("DataInfo");
 	   objectbtn.textContent = dataURL;
 	   //$("#btn-Preview-Image").attr("href", dataURL);
 });
