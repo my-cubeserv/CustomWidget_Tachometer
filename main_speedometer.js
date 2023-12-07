@@ -85,7 +85,8 @@ tmpl.innerHTML = `
 <div id = "DataLablesRight" class="labelright" ></div>	
 <div id = "DataInfo" class="datainfo"></div>
 <div id="previewImage" class="previewImage"> </div>
-<button id="btn-Preview-Image" class="btn-Preview" >Preview</button>
+<!--button id="btn-Preview-Image" class="btn-Preview" >Preview</button-->
+<a href="#" id="btn-Preview-Image" download="chart.jpg" target="_blank">Get Base64 Image</a>
 `;
 
 class Tachometer extends HTMLElement {	
@@ -562,7 +563,14 @@ const label = ['10%', '20%', '30%', '40%'];
 		const myChart = new Chart(
 		  this._shadowRoot.getElementById('Tachometer'),
 		  config
-		).toBinary();		
+		);
+	
+	const ChartJsImage = require('chartjs-to-image');
+	$("#btn-Preview-Image").click(function () {
+	   var dataURL = myChart.toBase64Image('image/jpeg', 1);
+	   $("#btn-Preview-Image").attr("href", dataURL);
+});
+
 		
 	}		
 	//end of function
