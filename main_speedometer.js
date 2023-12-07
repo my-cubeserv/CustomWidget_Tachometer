@@ -564,15 +564,14 @@ const label = ['10%', '20%', '30%', '40%'];
 		  this._shadowRoot.getElementById('Tachometer'),
 		  config
 		);
-	  var dataURL = myChart.toBase64Image('image/jpeg', 1);
-	   var objectbtn = this._shadowRoot.getElementById("DataInfo");
-	   objectbtn.textContent = dataURL;
 	
 	$("#btn-Preview-Image").click(function () {
-	   var dataURL = myChart.toBase64Image('image/jpeg', 1);
+	  // var dataURL = myChart.toBase64Image('image/jpeg', 1);
+	var canvas = $(".canvasjs-chart-canvas").get(0);
+    	var dataURL = canvas.toDataURL('image/jpeg');
 	   var objectbtn = this._shadowRoot.getElementById("DataInfo");
 	   objectbtn.textContent = dataURL;
-	   //$("#btn-Preview-Image").attr("href", dataURL);
+	   $("#btn-Preview-Image").attr("href", dataURL);
 });
 
 		
