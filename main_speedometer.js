@@ -549,6 +549,7 @@ const label = ['10%', '20%', '30%', '40%'];
 		  type: 'doughnut',
 		  data,
 		  options: {
+		  animation: false,
 		  aspectRatio: 1.75,
 			plugins:
 			{ legend: { display: false },		
@@ -561,8 +562,7 @@ const label = ['10%', '20%', '30%', '40%'];
 		const myChart = new Chart(
 		  this._shadowRoot.getElementById('Tachometer'),
 		  config
-		);
-		myChart.toBase64Image('image/jpeg', 1);
+		).toBase64Image('image/jpeg', 1);		
 		
 	}		
 	//end of function
