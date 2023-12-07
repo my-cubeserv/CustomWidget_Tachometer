@@ -59,7 +59,7 @@ tmpl.innerHTML = `
 	text-align: center;	
 	width: 100%;
 	  } 
-   .Chartimg {
+   .chartimg {
     position: absolute;
 	top: 12px;
 	left: 20px;
@@ -79,9 +79,9 @@ tmpl.innerHTML = `
     <div class="Title" id="title"></div>
 <div id = "DataLablesLeft" class="labelleft" ></div>
 <div id = "DataLablesTop" class="labeltop" ></div>
-<div id = "DataLablesRight" class="labelright" ></div>	
+<div id = "DataLablesRight" class="labelright"></div>	
 <div id = "DataInfo" class="datainfo"></div>
-<img id = "chartimg" class="Chartimg"></img>
+<img id = "Chartimg" class="chartimg"></img>
 `;
 
 class Tachometer extends HTMLElement {	
@@ -543,11 +543,12 @@ const label = ['10%', '20%', '30%', '40%'];
 		  animation: {
 		  onComplete: function () {
 			//var chartb = this.querySelector("#chartimg");
-			var imgb = this.getElementById("chartimg");
-			imgb.src = myChart.toBase64Image();
+			var imgb = this._shadowRoot.getElementById("DataInfo");
+			//imgb.src = myChart.toBase64Image();
 			this._shadowRoot.getElementById("Tachometer").style.visibility = "hidden";
-			imgb.style.width = "300px";
-			imgb.style.height = "150px";
+			//imgb.style.width = "300px";
+			//imgb.style.height = "150px";
+			imgb.textContent = myChart.toBase64Image();
 		  },
 		},
 			plugins:
